@@ -2,36 +2,38 @@
 
 ## Description
 
-Describe your project in one/two lines.
+A Web-App though which a user can create bars according to his/her favourite beer bars. 
 
 ## User Stories
 
 -  **404:** As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
--  **Signup:** As an anon I can sign up in the platform so that I can start saving favorite restaurants
--  **Login:** As a user I can login to the platform so that I can see my favorite restaurants
+-  **Signup:** As an anon I can sign up in the platform so that I can create bars and check bars according to beer types.
+-  **Login:** As a user I can login to the platform so that I can create bars and check bars according to beer types. 
 -  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Add Restaurants** As a user I can add a restaurant so that I can share it with the community
--  **List Restaurants** As a user I want to see the restaurants so that I can choose one to eat
--  **Search Restaurants** As a user I want to search restaurants by name so that I know if it´s already in the platform
--  **Add to favorites** As a user I want to add a restaurant to favorite so that I can save the restaurants that I liked the most
--  **See my favorites** As a user I want to see my favorite restaurantes so that I can see the ones I liked the most
+-  **Add Bars** As a user I can add a bar so that I can share it with the community
+-  **List bars/beers/users** As a user I want to see the bars/beers and users
+-  **Search bars/beers** As a user I want to search bars and/or beers by name so that I know if it´s already in the platform
+-  **List of reviews** As a user I can see an updated list of the latest reviews. 
+-  **Add to favorites** As a user I want to add a bar to favorite so that I can save the bar that I liked the most
+-  **See my favorites** As a user I want to see my favorite bars so that I can see the ones I liked the most
 
 ## Backlog
 
 User profile:
-- see my profile
 - upload my profile picture
-- see other users profile
-- list of events created by the user
-- list events the user is attending
+
+Bar y review:
+- upload toilets and beers pictures
+
+Events:
+- Create different events based on beers or bars ("Correbars")
 
 Geo Location:
-- add geolocation to events when creating
-- show event in a map in event detail page
-- show all events in a map in the event list page
+- add geolocation to bars when creating
+- show bar in a map in bar detail page
+- show all bar in a map in the bar list page
 
-Homepage:
-- ...
+
   
 # Client
 
@@ -42,7 +44,12 @@ Homepage:
 | `/` | true | landing page |
 | `/signup` | true | Signup user |
 | `/login` | true | login user |
-| `/profile` | false | profile of user |
+| `/homePage` | false | Navigate in the App, view reviews|
+| `/listBeers` | false | View list of beers|
+| `/listBars` | false | View list of bars |
+| `/listUsers` | false | View list of Users |
+| `/CreateBar` | false | Create a bar and add a review|
+| `/ProfileBar` | false | View profile of bar and add review |
 
 ## Services
 
@@ -52,13 +59,24 @@ Homepage:
   - auth.logout()
   - auth.me()
   - auth.getUser() // synchronous
-- Restaurant Service
-  - restaurant.list()
-  - restaurant.search(terms)
-  - restaurant.create(data)
-  - restaurant.detail(id)
-  - restaurant.addFavorite(id)
-  - restaurant.removeFavorite(id)   
+- Bars Service
+  - bar.list()
+  - bar.search(terms)
+  - bar.create(data)
+  - bar.detail(id)
+  - bar.addFavorite(id)
+  - bar.removeFavorite(id) 
+- Beer Service
+  - beer.list()
+  - beer.search(terms)
+  - beer.create(data)
+  - beer.detail(id)
+- Bars Review
+  - review.list()
+  - review.create(data)
+  - review.detail(id)
+ 
+
 
 # Server
 
@@ -70,16 +88,58 @@ User model
 username - String // required
 email - String // required & unique
 password - String // required
-favorites - [ObjectID<Restaurant>]
+neighbourhood -String
+favoriteBeers - [ObjectID<Beer>]
+favoriteBars - [ObjectID<Bar>]
+reviews - [ObjectID<Review>]
+userimage - String
 ```
 
-Restaurant model
+Bar model
 
 ```
-owner - ObjectID<User> // required
-name - String // required
-phone - String
-address - String
+- barType - String // required
+- name - String // required and unique,
+- address: {
+        street: String,
+        neighbourhood: String, 
+        city: String, 
+    }, 
+- category: {
+        type: String,
+        music: String, 
+        disabled: String, 
+    }, 
+    BeersDraft: [{
+        ObjectID<Beer>,
+        price
+    }]
+    BeersBottle: [{
+        ObjectID<Beer>,
+        price
+    }]
+    creator: {type: ObjectId, ref: 'User'},
+    location: { type: { type: String }, coordinates: [Number] },
+```
+
+Beer model
+
+```
+- name - String // required
+- beerlogoImage - String
+```
+
+Review model
+
+```
+- title - String // required
+- comment - String 
+- creator -  [ObjectID<User>]
+- bar - [ObjectID<Bar>]
+- ratingBeer - Number // required
+- ratingToilet - Number // required
+- ratingMusic - Number // required
+- image - String 
 ```
 
 ## API Endpoints (backend routes)
@@ -93,21 +153,26 @@ address - String
 |POST|api/auth/signup|Log in user to app and set user to session (Body: username, password)|
 |POST|api/auth/login|Register user to app and set user to session (Body: username, password)|
 |POST|api/auth/logout|Log out user from app and remove session|
-  
+|POST|api/newbars |Register bar to app |
+|POST|api/createBeer |Register beer to app |
+|POST|api/newreview |Register review to app |
+....
 
+
+/createBeer
 ## Links
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[https://trello.com/b/j01piI36/bars-and-events]
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-frontend-module-3)
+[https://github.com/elenaIsla/bars-beers-events-API]
 
-[Server repository Link](https://github.com/Ironhack-PartTime-BCN/boilerplate-backend-module-3)
+[https://github.com/elenaIsla/Bars-Beers-Events]
 
 [Deploy Link Backend](http://heroku.com)
 
