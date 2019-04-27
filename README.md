@@ -14,13 +14,15 @@ A Web-App though which a user can create bars according to his/her favourite bee
 -  **List bars/beers/users** As a user I want to see the bars/beers and users
 -  **Search bars/beers** As a user I want to search bars and/or beers by name so that I know if it´s already in the platform
 -  **List of reviews** As a user I can see an updated list of the latest reviews. 
--  **Add to favorites** As a user I want to add a bar to favorite so that I can save the bar that I liked the most
--  **See my favorites** As a user I want to see my favorite bars so that I can see the ones I liked the most
+
 
 ## Backlog
 
 User profile:
 - upload my profile picture
+- add favorite bars
+- deleted favorite bars
+
 
 Bar y review:
 - upload toilets and beers pictures
@@ -141,6 +143,16 @@ Review model
 - ratingMusic - Number // required
 - image - String 
 ```
+Event model
+
+```
+- title - String // required
+- Desciption - String 
+- creator -  [ObjectID<User>]
+- bars - [ObjectID<Bar>]
+- logo - String 
+- city - String
+```
 
 ## API Endpoints (backend routes)
 
@@ -153,14 +165,23 @@ Review model
 |POST|api/auth/signup|Log in user to app and set user to session (Body: username, password)|
 |POST|api/auth/login|Register user to app and set user to session (Body: username, password)|
 |POST|api/auth/logout|Log out user from app and remove session|
-|POST|api/newbars |Register bar to app |
-|POST|api/createBeer |Register beer to app |
-|POST|api/newreview |Register review to app |
+
+### bbe
+|POST|api/bars&events/createbar |Register bar to app |
+|POST|api/bars&events/updatebar |Update bar to app |
+|POST|api/bars&events/deletebar |Delete bar to app |
+|POST|api/bars&events/createbeer |Create beer to app |
+|POST|api/bars&events/updatebeer |Update beer to app |
+|POST|api/bars&events/deletebeer |Delete beer to app |
+|POST|api/bars&events/newreview |Register review to app |
+|POST|api/bars&events/deletereview |Delete review to app |
 ....
 
 
 /createBeer
 ## Links
+
+[picture] Bars&Events Flow: https://drive.google.com/file/d/1I1nmH0IH_GJpsRBp-UKbCQw7Ozy7TP6u/view?usp=sharing
 
 ### Trello/Kanban
 
