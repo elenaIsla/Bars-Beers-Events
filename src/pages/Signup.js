@@ -7,7 +7,8 @@ class Signup extends Component {
     password: "",
     city: "", 
     neighbourhood: "", 
-    beerType: "",
+    beerType: null,
+    beerTypeIsgoing: true,
   };
 
   handleFormSubmit = event => {
@@ -19,10 +20,12 @@ class Signup extends Component {
   handleChange = event => {
     console.log(event.target)
     const { name, value } = event.target;
+    console.log('CHEEEEECCK: ', name, value, this.state);
     this.setState({ [name]: value });
   };
-
+  
   render() {
+    console.log('render')
     const { username, password, city, neighbourhood, beerType } = this.state;
     return (
       <div>
@@ -48,7 +51,7 @@ class Signup extends Component {
           />
 
           <label>City:</label>
-          <div class="styled-select blue semi-square">
+          <div className="styled-select blue semi-square">
           <select 
             name="city" 
             id="city"
@@ -63,7 +66,7 @@ class Signup extends Component {
           </select>
           </div>
           <label>Neighbourhood:</label>
-          <div class="styled-select blue semi-square">
+          <div className="styled-select blue semi-square">
           <select 
             name="neighbourhood" 
             id="neighbourhood"
@@ -78,30 +81,32 @@ class Signup extends Component {
           </select>
           </div>
           <h3>Choose your favourite Beer Type</h3>
-          <div class="radio-input">
-          <label class="radio-btn">Draft</label>
+          <div className="radio-input">
+          <label htmlFor= "draft" className="radio-btn">Draft</label>
           <input 
             type="radio" 
             id="draft" 
-            value="draft" 
-            name={beerType}
+            value='Draft' 
+            name= 'beerType'
+            checked={this.state.beerType === 'Draft'}
             onChange={this.handleChange}
           />
-          <label class="radio-btn">Bottle</label>
+          <label htmlFor= "draft" className="radio-btn">Bottle</label>
           <input 
             type="radio" 
             id="bottle" 
-            value="bottle" 
-            name={beerType}
+            value='Bottle' 
+            name='beerType'
+            checked={this.state.beerType === 'Bottle'}
             onChange={this.handleChange}
           />  
           </div>
 
           <h3>Choose your favorite beers</h3>
-          <div class="radio-input">
+          <div className="radio-input">
               {/* <% beers.forEach((beer) => { %> 
                   <input type="checkbox" id="" value="<%= beer._id %>" name="favouriteBeers">
-                  <label class="radio-btn" for="favouriteBeers"><%= beer.name %></label>
+                  <label className="radio-btn" for="favouriteBeers"><%= beer.name %></label>
               <% }) %>     */}
             </div>
 
@@ -117,27 +122,6 @@ class Signup extends Component {
           <Link to={"/login"}> Login</Link>
         </p> 
 
-        {/* <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Signup" />
-        </form>
-        <p>
-          Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p> */}
       </div>
     );
   }
