@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 
-class CreateBar extends Component {
+class UpdateBar extends Component {
     state = {
-        barType: "",
+        barType: this.props.barType,
         name: "",
         categoryType: "",
         street: "",
@@ -153,4 +153,4 @@ class CreateBar extends Component {
   }
 }
 
-export default withAuth(CreateBar);
+export default withAuth(UpdateBar);

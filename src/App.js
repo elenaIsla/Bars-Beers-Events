@@ -9,6 +9,10 @@ import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import AuthProvider from "./lib/AuthProvider";
+import CreateBar from "./pages/CreateBar";
+import CreateBeer from "./pages/CreateBeer";
+import ListBars from "./components/ListBars"
+import BarDetails from "./pages/BarDetails";
 
 class App extends Component {
   render() {
@@ -20,7 +24,14 @@ class App extends Component {
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/Home" component={Home} />
+            <PrivateRoute path="/home" component={Home} />
+            <PrivateRoute path="/createBar" component={CreateBar} />
+            <PrivateRoute path="/createBeer" component={CreateBeer} />
+            <PrivateRoute path="/bars/:id/updateBar" component={BarDetails} />
+            <PrivateRoute path="/bars/:id" component={BarDetails} />
+            <PrivateRoute path="/bars" component={ListBars} />
+            
+            
           </Switch>
         </div>
       </AuthProvider>

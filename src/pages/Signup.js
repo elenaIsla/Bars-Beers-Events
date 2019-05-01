@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+
 class Signup extends Component {
   state = {
     username: "",
@@ -82,7 +83,7 @@ class Signup extends Component {
           </div>
           <h3>Choose your favourite Beer Type</h3>
           <div className="radio-input">
-          <label htmlFor= "draft" className="radio-btn">Draft</label>
+          <label className="radio-btn">Draft</label>
           <input 
             type="radio" 
             id="draft" 
@@ -91,7 +92,7 @@ class Signup extends Component {
             checked={this.state.beerType === 'Draft'}
             onChange={this.handleChange}
           />
-          <label htmlFor= "draft" className="radio-btn">Bottle</label>
+          <label className="radio-btn">Bottle</label>
           <input 
             type="radio" 
             id="bottle" 
