@@ -37,7 +37,7 @@ class BarDetails extends Component {
         this.props.history.push('/home');
       })
       .catch(error => {
-          console.log('no se ha borrado', error);
+        console.log('no se ha borrado', error);
       }); 
   }
 

@@ -4,26 +4,42 @@ import appService from "../lib/AppService";
 
 class UpdateBar extends Component {
     state = {
-        barType: this.props.barType,
-        name: "",
-        categoryType: "",
-        street: "",
-        neighbourhood: "",
-        city: ""   
+        bar: {},
+        error: null,
+        isLoaded: false,   
+    };
+
+    componentDidMount() {
+        appService
+        .getupdateBar(this.props.match.params)
+            .then(bar => {
+                this.setState({
+                bar,
+                isLoaded: true,
+                });
+                console.log(bar);
+            })
+            .catch((error) => {
+                this.setState({  
+                    isLoaded: true,
+                    error
+                });
+            }); 
     };
 
     handleFormSubmit = event => {
-    event.preventDefault();
-    const { barType, name, categoryType, street, neighbourhood, city} = this.state;
-    appService.createBar({ barType, name, categoryType, street, neighbourhood, city })
-        .then(data => {
-            console.log('ok');
-            this.props.history.push('/Home');
-        })
-        .catch(error => {
-            console.log('tu bar no se ha creado', error);
-        });
-    };
+        event.preventDefault();
+        const { barType, name, categoryType, street, neighbourhood, city} = this.state;
+        appService
+            .postupdateBar(this.props.match.params,{ barType, name, categoryType, street, neighbourhood, city })
+                .then(data => {
+                    console.log('ok');
+                    this.props.history.push('/Home');
+                })
+                .catch(error => {
+                    console.log('tu bar no se ha creado', error);
+                });
+        };
 
     handleChange = event => {
     console.log(event.target)
@@ -33,7 +49,7 @@ class UpdateBar extends Component {
     };
 
     render() {
-        const { barType, name, street, neighbourhood, city } = this.state;
+        const { barType, name, street, neighbourhood, city } = this.state.bar;
         return (
         <div>
             

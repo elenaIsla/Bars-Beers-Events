@@ -26,16 +26,23 @@ class AppService {
   getSingleBar = (params) => {
     const { id } = params;
     return this.appService
-    .get(`/bars&events/bars/${id}`)
-    .then(response =>response.data)
+      .get(`/bars&events/bars/${id}`)
+      .then(response =>response.data)
   }
 
-  updateBar = (params, bar) => {
+  getupdateBar = (params) => {
     const { id } = params;
-    const { barType, name, categoryType, street, neighbourhood, city } = bar;
     return this.appService
-    .post(`/bars&events/${id}/updateBar`, { barType, name, categoryType, street, neighbourhood, city })
-    .then(response =>response.data)
+      .get(`/bars&events/${id}/updateBar`)
+      .then(response =>response.data)
+  }
+
+  postupdateBar = (params, bar) =>{
+    const { barType, name, categoryType, street, neighbourhood, city } = bar;
+    const {id} = params;
+      return this.appService
+        .post(`/bars&events/bar/${id}`, { barType, name, categoryType, street, neighbourhood, city })
+        .then(({ data }) => data);
   }
 
   deleteBar = (params) => {
