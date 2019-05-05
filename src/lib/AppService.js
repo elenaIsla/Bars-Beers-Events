@@ -79,6 +79,22 @@ class AppService {
       .get("/bars&events/users")
       .then(response => response.data);
   }
+
+  // Review methods API
+
+  createReview(id, review) {
+    const { title, comment, ratingBeer } = review;
+    return this.appService
+      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer })
+      .then(response =>response.data)
+  }
+
+  listReviews() {
+    return this.appService
+      .get("/bars&events/reviews")
+      .then(response => response.data);
+  }
+
 }
 
 const appService = new AppService();

@@ -15,6 +15,7 @@ import ListBars from "./components/ListBars"
 import BarDetails from "./pages/BarDetails";
 import UpdateBar from "./pages/UpdateBar";
 import ListBeers from "./components/ListBeers";
+import AddReview from "./pages/AddReview";
 
 class App extends Component {
   render() {
@@ -31,7 +32,7 @@ class App extends Component {
             <PrivateRoute path="/createBeer" component={CreateBeer} />
             <PrivateRoute path="/listBeers" component={ListBeers} />
             <PrivateRoute path="/bars/:id/updateBar" component={UpdateBar} />
-            <PrivateRoute path="/bars/:id/addReview" component={UpdateBar} />
+            <PrivateRoute path="/bars/:id/addReview" component={AddReview} />
             <PrivateRoute path="/bars/:id" component={BarDetails} />
             <PrivateRoute path="/bars" component={ListBars} />
             

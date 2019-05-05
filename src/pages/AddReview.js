@@ -1,24 +1,31 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
+import StarRatingComponent from 'react-star-rating-component';
 
 class AddReview extends Component {
     state = {
         title: "",
         comment: "", 
+        ratingBeer: 1,
               
     };
 
+    onStarClick = (nextValue, prevValue, name) => {
+        this.setState({ratingBeer: nextValue});
+      }
+
     handleFormSubmit = event => {
     event.preventDefault();
-    const { name, description, beerlogoImage} = this.state;
-    appService.createReview({ name, description, beerlogoImage })
+    const { title, comment, ratingBeer } = this.state;
+    const { id } = this.props.match.params;
+    appService
+    .createReview( id, { title, comment, ratingBeer })   
         .then(data => {
-            console.log('ok');
-            this.props.history.push('/Home');
+            this.props.history.push(`/bars/${id}`);
         })
         .catch(error => {
-            console.log('tu beer no se ha creado', error);
+            console.log('review not created', error);
         })
         ;
     };
@@ -31,34 +38,33 @@ class AddReview extends Component {
     };
 
     render() {
-        const { name, description, beerlogoImage } = this.state;
+        const { title, comment, ratingBeer } = this.state;
         return (
         <div>
-            <form onSubmit={this.handleFormSubmit}>                
-                <label>Beer name</label><br/>
+            <form onSubmit={this.handleFormSubmit}> 
+            <label>Title</label><br/>
                 <input 
                     type="text" 
-                    name="name"
-                    value = {name}
+                    name="title"
+                    value = {title}
                     onChange={this.handleChange}
-                    placeholder="Beer name"/>
-                <label>Description</label><br/>
-                <input 
-                    type="text" 
-                    name="description"
-                    value = {description}
-                    onChange={this.handleChange}
-                    placeholder="description"/>
-
-                <label >Upload beer logo</label><br/>
-                <input 
-                    type='file' 
-                    name='image'
-                    value = {beerlogoImage}
-                    onChange={this.handleChange}
-                    />
+                    placeholder="Title of review"/>               
             
-                <input type="submit" value="Create Beer" />    
+            <label>Comment</label><br/>
+                <input 
+                    type="text" 
+                    name="comment"
+                    value = {comment}
+                    onChange={this.handleChange}
+                    placeholder="Write your comment"/> 
+            <h2>Rating Beers: {ratingBeer}</h2>
+                <StarRatingComponent 
+                    name="ratingBeer" 
+                    starCount={5}
+                    value={ratingBeer}
+                    onStarClick={this.onStarClick}
+                /> 
+            <input type="submit" value="Create Review" />             
             </form>
         </div>
         )

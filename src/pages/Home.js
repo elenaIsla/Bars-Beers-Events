@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import ListBeers from "../components/ListBeers";
 import ListBars from "../components/ListBars";
 import ListUsers from "../components/ListUsers";
-
+import ListReviews from "../components/ListReviews";
 
 class Home extends Component {
   render() {
@@ -22,6 +22,7 @@ class Home extends Component {
         {/* <ListBeers/><br/> */}
         <ListBars/><br/>
         <ListUsers/>
+        <ListReviews/>
         
       </div>
     );
