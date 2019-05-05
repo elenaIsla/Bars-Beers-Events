@@ -10,6 +10,7 @@ class Navbar extends Component {
           <>
             <p>username: {user.username}</p>
             <button onClick={logout}>Logout</button>
+            <Link to = {`/home`}>Back to home page</Link>
           </>
         ) : (
           <>

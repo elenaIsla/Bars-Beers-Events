@@ -15,10 +15,11 @@ class Home extends Component {
         <Link to = "/createBar">Create Bar</Link><br/>
           {user.username === 'admin' ? (
             <>
-            <Link to = "/createBeer">Create Beer</Link>
+            <Link to = "/createBeer">Create Beer</Link><br/>
+            <Link to = "/listBeers">Go to Beers</Link>
             </>
           ) : (<></>)}
-        <ListBeers/><br/>
+        {/* <ListBeers/><br/> */}
         <ListBars/><br/>
         <ListUsers/>
         

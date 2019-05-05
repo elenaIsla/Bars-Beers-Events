@@ -12,31 +12,31 @@ class ListBeers extends Component {
     componentDidMount() {
         appService
           .listBeers()
-          .then(beerlist => {
-            this.setState({
-              beerlist,
-              isLoaded: true,
-            });
-          })
-          .catch((error) => {
-            this.setState({  
+            .then(beerlist => {
+                this.setState({
+                beerlist,
                 isLoaded: true,
-                error
-            });
+                });
+            })
+            .catch((error) => {
+                this.setState({  
+                    isLoaded: true,
+                    error
+                });
           });
     }
-    handleDeleteBeer = (id) => {
+    
+    // handleDeleteBeer = (id, index) => {
         
-        appService
-          .deleteBeer(id)
-          .then(data => {
-            console.log('ok');
-            
-          })
-          .catch(error => {
-            console.log('no se ha borrado', error);
-          }); 
-      }
+    //     appService
+    //       .deleteBeer(id)
+    //         .then(data => {
+                
+    //         })
+    //         .catch(error => {
+    //             console.log('no se ha borrado', error);
+    //         });
+    //   }
 
     render() {
         const {beerlist} = this.state
@@ -48,7 +48,7 @@ class ListBeers extends Component {
                         <Link to = {`/beers/${beer._id}`}>
                             {beer.name}
                         </Link>
-                        <button onClick={this.handleDeleteBeer(beer._id)}>Delete Beer</button>
+                        {/* <button onClick={() => this.handleDeleteBeer(beer._id, index)}>Delete Beer</button> */}
                     </div>
                 )               
             })

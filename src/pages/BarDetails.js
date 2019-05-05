@@ -12,6 +12,10 @@ class BarDetails extends Component {
     neighbourhood: "",
     city: "",
     _id: "",
+    draftBeer: [],
+    bottleBeer:[],
+    price: "",
+    beerlist: [],
     error: null,
     isLoaded: false,
   } 
@@ -28,9 +32,12 @@ class BarDetails extends Component {
           neighbourhood: bar.address.neighbourhood,
           city: bar.address.city,
           _id: bar._id,
+          draftBeer: bar.draftBeer,
+          bottleBeer:bar.bottleBeer,
+          price: bar.price,
           isLoaded: true,
         });
-        console.log(bar);
+        console.log(bar.draftBeer);
       })
       .catch((error) => {
         this.setState({  
@@ -38,6 +45,22 @@ class BarDetails extends Component {
             error
         });
       }); 
+
+    appService
+    .listBeers()
+        .then(listBeers => {
+            this.setState({
+            listBeers,
+            isLoaded: true,
+            });
+            console.log(listBeers);
+        })
+        .catch((error) => {
+            this.setState({  
+                isLoaded: true,
+                error
+            });
+        }); 
   }
 
   handleDeleteBar = () => {
@@ -54,14 +77,33 @@ class BarDetails extends Component {
   }
 
   render(){
-    const { _id, barType, name, street, neighbourhood, city } = this.state; 
+    const { _id, barType, name, street, neighbourhood, city, price, draftBeer, bottleBeer } = this.state; 
     return (
       <div>
-      {name}
-      {city}
-      <button onClick={this.handleDeleteBar}>Delete Bar</button>
+      <h2>{name}</h2>
+      <p>{neighbourhood}, {city}</p>
+      {street}
+      {price}
+      <h2>Draft beers</h2>
+        {draftBeer.map((beer, index) =>{
+          return (
+            <div key = {index}>
+              {beer.name}          
+            </div>  
+            
+            )})}
+      <h2>Bottle beers</h2>
+        {bottleBeer.map((beer, index) =>{
+          return (
+            <div key = {index}>
+              {beer.name}          
+            </div>  
+            )})}
+      <br/>
+      <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
+      <button onClick={this.handleDeleteBar}>Delete Bar</button><br/>
       <Link to = {`/bars/${_id}/updateBar`}> Edit Bar </Link>
-      <Link to = {`/home`}>Back to home page</Link>
+      
       </div>
     )}
 }

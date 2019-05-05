@@ -37,8 +37,7 @@ class AppService {
       .then(response =>response.data)
   }
 
-  putupdateBar = (params, barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price) =>{
-    
+  putupdateBar = (params, barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price) =>{  
     const {id} = params;
       return this.appService
         .put(`/bars&events/${id}`, { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price })
