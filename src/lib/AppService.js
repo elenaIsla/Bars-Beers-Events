@@ -11,9 +11,9 @@ class AppService {
   // BAR methods API 
 
   createBar(bar) {
-      const { barType, name, categoryType, street, neighbourhood, city } = bar;
+      const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price } = bar;
       return this.appService
-        .post("/bars&events/createBar", { barType, name, categoryType, street, neighbourhood, city })
+        .post("/bars&events/createBar", { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price })
         .then(({ data }) => data);
   }
   
@@ -37,11 +37,11 @@ class AppService {
       .then(response =>response.data)
   }
 
-  postupdateBar = (params, bar) =>{
-    const { barType, name, categoryType, street, neighbourhood, city } = bar;
+  putupdateBar = (params, barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price) =>{
+    
     const {id} = params;
       return this.appService
-        .post(`/bars&events/bar/${id}`, { barType, name, categoryType, street, neighbourhood, city })
+        .put(`/bars&events/${id}`, { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price })
         .then(({ data }) => data);
   }
 
@@ -65,6 +65,12 @@ class AppService {
     return this.appService
       .get("/bars&events/beers")
       .then(response => response.data);
+  }
+
+  deleteBeer = (id) => {
+    return this.appService
+      .post(`/bars&events/${id}/deleteBeer`)
+      .then(response =>response.data)
   }
 
   // USER methods API 

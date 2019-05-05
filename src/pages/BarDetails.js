@@ -5,7 +5,13 @@ import { Link } from "react-router-dom";
 class BarDetails extends Component {
 
   state = {
-    bar: {},
+    barType: "",
+    name: "",
+    categoryType: "",
+    street: "",
+    neighbourhood: "",
+    city: "",
+    _id: "",
     error: null,
     isLoaded: false,
   } 
@@ -15,7 +21,13 @@ class BarDetails extends Component {
       .getSingleBar(this.props.match.params)
       .then(bar => {
         this.setState({
-          bar,
+          barType: bar.barType,
+          name: bar.name,
+          categoryType: bar.category.categoryType,
+          street: bar.address.street,
+          neighbourhood: bar.address.neighbourhood,
+          city: bar.address.city,
+          _id: bar._id,
           isLoaded: true,
         });
         console.log(bar);
@@ -42,13 +54,13 @@ class BarDetails extends Component {
   }
 
   render(){
-      const {bar} = this.state;
-      
+    const { _id, barType, name, street, neighbourhood, city } = this.state; 
     return (
       <div>
-      {bar.name}
-      <button onClick={this.handleDeleteBar}>Delete project</button>
-      <Link to = {`/bars/${bar._id}/updateBar`}> Edit Bar </Link>
+      {name}
+      {city}
+      <button onClick={this.handleDeleteBar}>Delete Bar</button>
+      <Link to = {`/bars/${_id}/updateBar`}> Edit Bar </Link>
       <Link to = {`/home`}>Back to home page</Link>
       </div>
     )}

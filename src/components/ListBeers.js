@@ -25,6 +25,18 @@ class ListBeers extends Component {
             });
           });
     }
+    handleDeleteBeer = (id) => {
+        
+        appService
+          .deleteBeer(id)
+          .then(data => {
+            console.log('ok');
+            
+          })
+          .catch(error => {
+            console.log('no se ha borrado', error);
+          }); 
+      }
 
     render() {
         const {beerlist} = this.state
@@ -36,6 +48,7 @@ class ListBeers extends Component {
                         <Link to = {`/beers/${beer._id}`}>
                             {beer.name}
                         </Link>
+                        <button onClick={this.handleDeleteBeer(beer._id)}>Delete Beer</button>
                     </div>
                 )               
             })

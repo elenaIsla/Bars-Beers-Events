@@ -9,18 +9,41 @@ class CreateBar extends Component {
         categoryType: "",
         street: "",
         neighbourhood: "",
-        city: ""   
+        city: "",
+        draftBeer: [],
+        bottleBeer:[],
+        price: "",
+        listBeers: []   
+    };
+
+    componentDidMount() {
+        appService
+        .listBeers()
+            .then(listBeers => {
+                this.setState({
+                listBeers,
+                isLoaded: true,
+                });
+               console.log(listBeers);
+            })
+            .catch((error) => {
+                this.setState({  
+                    isLoaded: true,
+                    error
+                });
+            }); 
     };
 
     handleFormSubmit = event => {
     event.preventDefault();
-    const { barType, name, categoryType, street, neighbourhood, city} = this.state;
-    appService.createBar({ barType, name, categoryType, street, neighbourhood, city })
+    const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price} = this.state;
+    appService.createBar({ barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price })
         .then(data => {
             console.log('ok');
             this.props.history.push('/Home');
         })
         .catch(error => {
+            console.log(draftBeer, bottleBeer);
             console.log('tu bar no se ha creado', error);
         });
     };
@@ -32,8 +55,28 @@ class CreateBar extends Component {
     this.setState({ [name]: value });
     };
 
+    handleCheckDraft = event => {
+        const {value} = event.target;
+        const {draftBeer} = this.state;
+        console.log(value);
+        this.setState({
+            draftBeer: [...draftBeer, value]
+        })
+        console.log(draftBeer);
+    }
+
+    handleCheckBottle = event => {
+        const {value} = event.target;
+        const {bottleBeer} = this.state;
+        console.log(value);
+        this.setState({
+            bottleBeer: [...bottleBeer, value]
+        })
+    }
+
     render() {
-        const { barType, name, street, neighbourhood, city } = this.state;
+        const { barType, name, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
+        const {listBeers} = this.state;
         return (
         <div>
             
@@ -115,35 +158,57 @@ class CreateBar extends Component {
 
             </div>
 
-            {/* <h3>Draft Beers</h3>
-            <div className="bar">
-            <% beers.forEach((beer) => { %>
-                <div className="flex location">
-                    <div className="checkbox">
-                        <input type="checkbox" name="BeersDraft" value="<%= beer._id %>">
-                    </div>
-                    <div className="img-beer">
-                        <img className="img-size" src="<%= beer.beerlogoImage %>" alt="">
-                    </div>    
-                </div>
-            <% }) %>
-            </div>
-
+            <h3>Draft Beers</h3>
+                {listBeers.map((beer, index) => {
+                    return (
+                        <div key = {index}>
+                            <input 
+                                type="checkbox" 
+                                name = {draftBeer}
+                                value= { beer._id }
+                                onChange={this.handleCheckDraft}
+                            />
+                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                        </div>
+                    )        
+                })}
             <h3>Bottle Beers</h3>
-            <div className="bar">
-                <% beers.forEach((beer) => { %>
-                    
-                    <div className="flex location">
-                        <div className="checkbox">
-                            <input type="checkbox" name="BeersBottle" value="<%= beer._id %>">
+                {listBeers.map((beer, index) => {
+                    return (
+                        <div key = {index}>
+                            <input 
+                                type="checkbox" 
+                                name = {bottleBeer} 
+                                value= { beer._id }
+                                onChange={this.handleCheckBottle}
+                            />
+                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
-                        <div className="img-beer">
-                            <img className="img-size" src="<%= beer.beerlogoImage %>" alt="">
-                        </div>
-                    </div>
-                
-                <% }) %>
-            </div> */}
+                    )        
+                })}
+            <label>Price range</label><br/>
+            
+            <label>1 - 2 €</label>
+            <input 
+                type="radio" 
+                value="range1" 
+                name="price"
+                checked={this.state.price === 'range1'}
+                onChange={this.handleChange}/>
+            <label>2 - 3 €</label>
+            <input 
+                type="radio" 
+                value="range2" 
+                name="price"
+                checked={this.state.price === 'range2'}
+                onChange={this.handleChange}/>
+            <label>3 - 4 €</label>
+            <input 
+                type="radio" 
+                value="range3" 
+                name="price"
+                checked={this.state.price === 'range3'}
+                onChange={this.handleChange}/>
             
             <input type="submit" value="Create BAR" /> 
         

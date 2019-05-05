@@ -4,9 +4,17 @@ import appService from "../lib/AppService";
 
 class UpdateBar extends Component {
     state = {
-        bar: {},
+        barType: "",
+        name: "",
+        categoryType: "",
+        street: "",
+        neighbourhood: "",
+        city: "", 
+        draftBeer: [],
+        bottleBeer: [],
+        price: "",
         error: null,
-        isLoaded: false,   
+        isLoaded: false,  
     };
 
     componentDidMount() {
@@ -14,10 +22,20 @@ class UpdateBar extends Component {
         .getupdateBar(this.props.match.params)
             .then(bar => {
                 this.setState({
-                bar,
+                barType: bar.barType,
+                name: bar.name,
+                categoryType: bar.category.categoryType,
+                street: bar.address.street,
+                neighbourhood: bar.address.neighbourhood,
+                city: bar.address.city,
+                draftBeer: bar.draftBeer,
+                bottleBeer: bar.bottleBeer,
+                price: bar.price,
                 isLoaded: true,
                 });
                 console.log(bar);
+                console.log( bar.address.street)
+                console.log( bar.address.city)
             })
             .catch((error) => {
                 this.setState({  
@@ -29,10 +47,12 @@ class UpdateBar extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        const { barType, name, categoryType, street, neighbourhood, city} = this.state;
+        const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price} = this.state;
+        const { params } = this.props.match;
         appService
-            .postupdateBar(this.props.match.params,{ barType, name, categoryType, street, neighbourhood, city })
+            .putupdateBar(params, barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price)
                 .then(data => {
+                    console.log(params)
                     console.log('ok');
                     this.props.history.push('/Home');
                 })
@@ -49,7 +69,7 @@ class UpdateBar extends Component {
     };
 
     render() {
-        const { barType, name, street, neighbourhood, city } = this.state.bar;
+        const { barType, name, street, neighbourhood, city, price } = this.state;
         return (
         <div>
             
@@ -76,26 +96,8 @@ class UpdateBar extends Component {
                 value = {name}
                 onChange={this.handleChange} 
                 placeholder="Bar name" 
-            /><br/>       
-            
-            <label>Select Category</label><br/>
-            <div className="checkbox">
-            <label>Cutre</label>
-            <input 
-                type="radio" 
-                value="Cutre" 
-                name="categoryType"
-                checked={this.state.categoryType === 'Cutre'}
-                onChange={this.handleChange}/>
-            <label>Moderno</label>
-            <input 
-                type="radio" 
-                value="Moderno" 
-                name="categoryType"
-                checked={this.state.categoryType === 'Moderno'}
-                onChange={this.handleChange}/>
-        
-            
+            /><br/>  
+
             <h3>Address</h3>
             <label>Street:</label>
             <input 
@@ -127,39 +129,81 @@ class UpdateBar extends Component {
                 <option value="Borne">Borne</option>
                 <option value="Gótico">Gótico</option>
                 <option value="Sarria">Sarria</option> 
-            </select>
+            </select>     
+            
+            <label>Select Category</label><br/>
+            <div className="checkbox">
+            <label>Cutre</label>
+            <input 
+                type="radio" 
+                value="Cutre" 
+                name="categoryType"
+                checked={this.state.categoryType === 'Cutre'}
+                onChange={this.handleChange}/>
+            <label>Moderno</label>
+            <input 
+                type="radio" 
+                value= "Moderno" 
+                name="categoryType"
+                checked={this.state.categoryType === 'Moderno'}
+                onChange={this.handleChange}/>
+        
+            
+            
 
             </div>
 
             {/* <h3>Draft Beers</h3>
-            <div className="bar">
-            <% beers.forEach((beer) => { %>
-                <div className="flex location">
-                    <div className="checkbox">
-                        <input type="checkbox" name="BeersDraft" value="<%= beer._id %>">
-                    </div>
-                    <div className="img-beer">
-                        <img className="img-size" src="<%= beer.beerlogoImage %>" alt="">
-                    </div>    
-                </div>
-            <% }) %>
-            </div>
-
+                {listBeers.map((beer, index) => {
+                    return (
+                        <div key = {index}>
+                            <input 
+                                type="checkbox" 
+                                name = {draftBeer}
+                                value= { beer._id }
+                                onChange={this.handleCheckDraft}
+                            />
+                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                        </div>
+                    )        
+                })}
             <h3>Bottle Beers</h3>
-            <div className="bar">
-                <% beers.forEach((beer) => { %>
-                    
-                    <div className="flex location">
-                        <div className="checkbox">
-                            <input type="checkbox" name="BeersBottle" value="<%= beer._id %>">
+                {listBeers.map((beer, index) => {
+                    return (
+                        <div key = {index}>
+                            <input 
+                                type="checkbox" 
+                                name = {bottleBeer} 
+                                value= { beer._id }
+                                onChange={this.handleCheckBottle}
+                            />
+                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
-                        <div className="img-beer">
-                            <img className="img-size" src="<%= beer.beerlogoImage %>" alt="">
-                        </div>
-                    </div>
-                
-                <% }) %>
-            </div> */}
+                    )        
+                })} */}
+            <label>Price range</label><br/>
+            
+            <label>1 - 2 €</label>
+            <input 
+                type="radio" 
+                value="range1" 
+                name="price"
+                checked={this.state.price === 'range1'}
+                onChange={this.handleChange}/>
+            <label>2 - 3 €</label>
+            <input 
+                type="radio" 
+                value="range2" 
+                name="price"
+                checked={this.state.price === 'range2'}
+                onChange={this.handleChange}/>
+            <label>3 - 4 €</label>
+            <input 
+                type="radio" 
+                value="range3" 
+                name="price"
+                checked={this.state.price === 'range3'}
+                onChange={this.handleChange}/>
             
             <input type="submit" value="Create BAR" /> 
         
