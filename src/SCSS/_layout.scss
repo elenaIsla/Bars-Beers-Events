@@ -1,0 +1,59 @@
+$primary: black;
+$secondary:#f4c734;
+$terciary: #fcfffa;
+$fourthy: #8000ff;
+$fifthy: #00b084;
+$sixthy: #3d397c;
+$font-primary: 'Open Sans', sans-serif;
+$font-secundary: 'Roboto', cursive;
+$font-size: 16px;
+$footer-height: 60px;
+
+html {
+    font-size: $font-size;
+    font-family: $font-primary;
+
+    body {
+        padding: 0% 0%;
+        font-family: $font-primary, $font-secundary;
+        font-size: $font-size;
+        color: $secondary;
+        
+        div {
+            max-width: 100%;
+        }
+        p {
+            padding: 10% 0%;
+            color: $primary;
+            line-height: 1.4em;
+        }
+        h1 {
+            padding: 5% 0%;
+            font-family: $font-secundary;
+            font-size: 2rem;
+            color: $primary;
+        }
+        h2 {
+            font-family: $font-secundary;
+            font-size: 1.5rem;
+            color: $primary;
+            padding: 5% 0% 10% 0%;
+        }
+        h3 {
+            font-family: $font-primary;
+            font-size: 1.2rem;
+            color: $secondary;
+            padding: 2% 0% 2% 0%;
+        }
+        .container {
+            padding: 10% 10%;
+            
+            margin: 0%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+    }    
+}    

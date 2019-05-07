@@ -1,0 +1,19 @@
+.login_link {
+    display: inline;
+    color: $fourthy;
+    background-color: white;
+    font-size: 1rem;
+    &:hover{
+    background-color: white;
+    color: $secondary;
+    }
+}
+.login-btn {
+    background-color: #00b084;
+    border: 1px solid #00b084;
+}
+
+.logo {
+    width: 30%;
+    height: 30%;
+}

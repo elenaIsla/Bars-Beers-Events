@@ -30,7 +30,7 @@ class Signup extends Component {
     const { username, password, city, neighbourhood, beerType } = this.state;
     return (
       <div>
-
+        <img src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
         <form onSubmit={this.handleFormSubmit}>
 
           <label>Username:</label>
@@ -118,10 +118,9 @@ class Signup extends Component {
    
         </form>
 
-        <p>
-          Already have account?
-          <Link to={"/login"}> Login</Link>
-        </p> 
+        <div><p>Already have account?</p> 
+          <Link to={"/login"}> <button>Login</button></Link>
+          </div>
 
       </div>
     );

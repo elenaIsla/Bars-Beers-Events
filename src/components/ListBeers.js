@@ -26,17 +26,30 @@ class ListBeers extends Component {
           });
     }
     
-    // handleDeleteBeer = (id, index) => {
+    handleDeleteBeer = (id) => {
         
-    //     appService
-    //       .deleteBeer(id)
-    //         .then(data => {
-                
-    //         })
-    //         .catch(error => {
-    //             console.log('no se ha borrado', error);
-    //         });
-    //   }
+        appService
+          .deleteBeer(id)
+            .then(data => {
+                appService
+                    .listBeers()
+                        .then(beerlist => {
+                            this.setState({
+                            beerlist,
+                            isLoaded: true,
+                            });
+                        })
+                        .catch((error) => {
+                            this.setState({  
+                                isLoaded: true,
+                                error
+                            });
+                    });
+            })
+            .catch(error => {
+                console.log('no se ha borrado', error);
+            });
+      }
 
     render() {
         const {beerlist} = this.state
@@ -48,7 +61,7 @@ class ListBeers extends Component {
                         <Link to = {`/beers/${beer._id}`}>
                             {beer.name}
                         </Link>
-                        {/* <button onClick={() => this.handleDeleteBeer(beer._id, index)}>Delete Beer</button> */}
+                        <button onClick={() => this.handleDeleteBeer(beer._id)}>Delete Beer</button>
                     </div>
                 )               
             })
