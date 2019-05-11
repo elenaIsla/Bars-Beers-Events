@@ -31,20 +31,21 @@ class ListBeers extends Component {
         appService
           .deleteBeer(id)
             .then(data => {
-                appService
-                    .listBeers()
-                        .then(beerlist => {
-                            this.setState({
-                            beerlist,
-                            isLoaded: true,
-                            });
-                        })
-                        .catch((error) => {
-                            this.setState({  
-                                isLoaded: true,
-                                error
-                            });
-                    });
+                // appService
+                //     .listBeers()
+                //         .then(beerlist => {
+                //             this.setState({
+                //             beerlist,
+                //             isLoaded: true,
+                //             });
+                //         })
+                //         .catch((error) => {
+                //             this.setState({  
+                //                 isLoaded: true,
+                //                 error
+                //             });
+                //     });
+                this.props.history.push('/home');
             })
             .catch(error => {
                 console.log('no se ha borrado', error);

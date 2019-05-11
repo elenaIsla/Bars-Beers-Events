@@ -14,20 +14,19 @@ import BarDetails from "./pages/BarDetails";
 import UpdateBar from "./pages/UpdateBar";
 import ListBeers from "./components/ListBeers";
 import AddReview from "./pages/AddReview";
+import LandingPage from "./pages/LandingPage";
 import './App.scss';
 
 class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div className="container">
-        <h1>Bars and Events</h1>
+        <div className="container">  
           <Navbar />
           <Switch>
-            {/* <AnonRoute path="/" component={LandingPage} /> */}
+            <AnonRoute exact path="/" component={LandingPage} />
             <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
-            
+            <AnonRoute path="/login" component={Login} /> 
             <PrivateRoute path="/home" component={Home} />
             <PrivateRoute path="/createBar" component={CreateBar} />
             <PrivateRoute path="/createBeer" component={CreateBeer} />

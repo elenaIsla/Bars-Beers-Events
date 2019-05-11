@@ -6,17 +6,6 @@ class BarDetails extends Component {
 
   state = {
     bar: {},
-      // barType: "",
-      // name: "",
-      // categoryType: "",
-      // street: "",
-      // neighbourhood: "",
-      // city: "",
-      // _id: "",
-      // draftBeer: [],
-      // bottleBeer:[],
-      // price: "",
-      // beerlist: [],
     error: null,
     isLoaded: false,
   } 
@@ -28,16 +17,6 @@ class BarDetails extends Component {
         console.log(bar);
         this.setState({
           bar,
-          // barType: bar.barType,
-          // name: bar.name,
-          // categoryType: bar.category.categoryType,
-          // street: bar.address.street,
-          // neighbourhood: bar.address.neighbourhood,
-          // city: bar.address.city,
-          // _id: bar._id,
-          // draftBeer: bar.draftBeer,
-          // bottleBeer:bar.bottleBeer,
-          // price: bar.price,
           isLoaded: true,
         });
         console.log(bar.draftBeer);
