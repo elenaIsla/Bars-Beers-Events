@@ -83,9 +83,9 @@ class AppService {
   // Review methods API
 
   createReview(review) {
-    const { id, title, comment, ratingBeer } = review;
+    const { id, title, comment, ratingBeer, ratingToilet, ratingMusic } = review;
     return this.appService
-      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer })
+      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer, ratingToilet, ratingMusic })
       .then(response =>response.data)
   }
 

@@ -8,20 +8,30 @@ class AddReview extends Component {
         title: "",
         comment: "", 
         ratingBeer: 1,
+        ratingToilet: 1,
+        ratingMusic: 1
         
               
     };
 
-    onStarClick = (nextValue, prevValue, name) => {
+    onStarClickBeer = (nextValue, prevValue, name) => {
         this.setState({ratingBeer: nextValue});
+      }
+
+    onStarClickToilet = (nextValue, prevValue, name) => {
+    this.setState({ratingToilet: nextValue});
+    }
+
+    onStarClickMusic = (nextValue, prevValue, name) => {
+        this.setState({ratingMusic: nextValue});
       }
 
     handleFormSubmit = event => {
     event.preventDefault();
-    const { title, comment, ratingBeer } = this.state;
+    const { title, comment, ratingBeer, ratingToilet, ratingMusic } = this.state;
     const { id } = this.props.match.params;
     appService
-    .createReview({ id, title, comment, ratingBeer })   
+    .createReview({ id, title, comment, ratingBeer, ratingToilet, ratingMusic })   
         .then(data => {
             this.props.history.push(`/bars/${id}`);
         })
@@ -40,7 +50,7 @@ class AddReview extends Component {
 
     render() {
         console.log(this.props.match.params.id)
-        const { title, comment, ratingBeer } = this.state;
+        const { title, comment, ratingBeer, ratingToilet, ratingMusic } = this.state;
         return (
         <div>
             <form onSubmit={this.handleFormSubmit}> 
@@ -64,7 +74,21 @@ class AddReview extends Component {
                     name="ratingBeer" 
                     starCount={5}
                     value={ratingBeer}
-                    onStarClick={this.onStarClick}
+                    onStarClick={this.onStarClickBeer}
+                /> 
+            <h2>Rating Toilet: {ratingToilet}</h2>
+                <StarRatingComponent 
+                    name="ratingToilet" 
+                    starCount={5}
+                    value={ratingToilet}
+                    onStarClick={this.onStarClickToilet}
+                /> 
+            <h2>Rating Music: {ratingMusic}</h2>
+                <StarRatingComponent 
+                    name="ratingMusic" 
+                    starCount={5}
+                    value={ratingMusic}
+                    onStarClick={this.onStarClickMusic}
                 /> 
             <input type="submit" value="Create Review" />             
             </form>

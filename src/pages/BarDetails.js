@@ -68,20 +68,29 @@ class BarDetails extends Component {
       <p>{neighbourhood}, {city}</p>
       {street}
       {price}
-      <h2>Draft beers</h2>
+      <h3>Draft beers</h3>
         {draftBeer && draftBeer.map((beer, index) =>{
-          return (
-            <div key = {index}>
-              {beer.name}          
-            </div>  
+          return !beer ? (
+            <div>
+            So saaad!! Noone has registered any draft beer in this bar.
+          </div>
             
+            ):(
+              <div key = {index}>
+              {beer.name}          
+            </div>
+              
             )})}
-      <h2>Bottle beers</h2>
+      <h3>Bottle beers</h3>
         {bottleBeer && bottleBeer.map((beer, index) =>{
-          return (
+          return beer ? (
             <div key = {index}>
               {beer.name}          
             </div>  
+            ):(
+              <div>
+                So saaad!! Noone has registered any bottle beer in this bar.
+              </div>
             )})}
       <br/>
       <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
