@@ -31,7 +31,7 @@ class AuthProvider extends Component {
   state = {
     isLoggedin: false,
     user: null,
-    isLoading: true
+    isLoading: true,
   };
 
   componentDidMount() {

@@ -8,6 +8,7 @@ class AddReview extends Component {
         title: "",
         comment: "", 
         ratingBeer: 1,
+        
               
     };
 
@@ -20,7 +21,7 @@ class AddReview extends Component {
     const { title, comment, ratingBeer } = this.state;
     const { id } = this.props.match.params;
     appService
-    .createReview( id, { title, comment, ratingBeer })   
+    .createReview({ id, title, comment, ratingBeer })   
         .then(data => {
             this.props.history.push(`/bars/${id}`);
         })
@@ -38,6 +39,7 @@ class AddReview extends Component {
     };
 
     render() {
+        console.log(this.props.match.params.id)
         const { title, comment, ratingBeer } = this.state;
         return (
         <div>

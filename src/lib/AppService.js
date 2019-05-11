@@ -82,8 +82,8 @@ class AppService {
 
   // Review methods API
 
-  createReview(id, review) {
-    const { title, comment, ratingBeer } = review;
+  createReview(review) {
+    const { id, title, comment, ratingBeer } = review;
     return this.appService
       .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer })
       .then(response =>response.data)
@@ -93,6 +93,12 @@ class AppService {
     return this.appService
       .get("/bars&events/reviews")
       .then(response => response.data);
+  }
+
+  deleteReview = (id) => {
+    return this.appService
+      .post(`/bars&events/${id}/deleteReview`)
+      .then(response =>response.data)
   }
 
 }
