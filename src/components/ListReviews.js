@@ -32,8 +32,7 @@ class ListReviews extends Component {
           });
     }
 
-    handleDeleteReview = (id) => {
-        
+    handleDeleteReview = (id) => {   
         appService
           .deleteReview (id)
             .then(data => {
@@ -52,8 +51,7 @@ class ListReviews extends Component {
         <div>
             {reviewlist.map((review, index) =>{
                 return (
-                <div key={index}>
-                    
+                <div key={index}> 
                         {review.title}
                         {review.comment}
                         <StarRatingComponent 
@@ -61,14 +59,14 @@ class ListReviews extends Component {
                             starCount={5}
                             value={review.ratingBeer}
                             editing={false}
-                            />
+                        />
                         {review.creator[0].username}
                         {review.barID[0].name}
-                        {user.username === 'admin' ? (
+                        {user.username === 'admin' && (
                             <>
                                 <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
                             </>
-                        ) : (<></>)}                    
+                        )}                    
                 </div>
                 )               
             })

@@ -80,6 +80,22 @@ class AppService {
       .then(response => response.data);
   }
 
+  getSingleUser = (params) => {
+    const { id } = params;
+    console.log(id);
+    return this.appService
+      .get(`/bars&events/users/${id}`)
+      .then(response =>response.data)
+  }
+
+  deleteUser = (id) => {
+    return this.appService
+      .post(`/bars&events/${id}/deleteUser`)
+      .then(response =>response.data)
+  }
+
+
+
   // Review methods API
 
   createReview(review) {
