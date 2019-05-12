@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import { Link } from "react-router-dom";
 
@@ -68,21 +69,31 @@ class BarDetails extends Component {
       <p>{neighbourhood}, {city}</p>
       {street}
       {price}
-      <h2>Draft beers</h2>
-        {draftBeer && draftBeer.map((beer, index) =>{
+      <h3>Draft beers</h3>
+        {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
           return (
             <div key = {index}>
               {beer.name}          
-            </div>  
+            </div>
             
-            )})}
-      <h2>Bottle beers</h2>
-        {bottleBeer && bottleBeer.map((beer, index) =>{
+          )})
+          ):(
+            <div>
+              So saaad!! Noone has registered any draft beer in this bar.
+            </div>   
+        ))}
+      <h3>Bottle beers</h3>
+        {bottleBeer && (!(bottleBeer.length === 0) ? (bottleBeer.map((beer, index) =>{
           return (
             <div key = {index}>
               {beer.name}          
             </div>  
-            )})}
+            )})
+            ):(
+              <div>
+                So saaad!! Noone has registered any bottle beer in this bar.
+              </div>
+        ))}
       <br/>
       <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
       <button onClick={this.handleDeleteBar}>Delete Bar</button><br/>
@@ -92,4 +103,4 @@ class BarDetails extends Component {
     )}
 }
 
-export default BarDetails;
+export default withAuth(BarDetails);

@@ -10,22 +10,25 @@ class ListBars extends Component {
         isLoaded: false,
     }
     componentDidMount() {
-        appService
-          .listBars()
-          .then(barlist => {
-            this.setState({
-              barlist,
-              isLoaded: true,
-            });
-          })
-          .catch((error) => {
-            this.setState({  
-                isLoaded: true,
-                error
-            });
-          });
+       this.getlistBars();
     }
-
+    getlistBars = () => {
+        appService
+        .listBars()
+        .then(barlist => {
+          this.setState({
+            barlist,
+            isLoaded: true,
+          });
+        })
+        .catch((error) => {
+          this.setState({  
+              isLoaded: true,
+              error
+          });
+        });
+    }
+    
     render() {
         const {barlist} = this.state
     return (

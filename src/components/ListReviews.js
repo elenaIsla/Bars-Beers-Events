@@ -11,6 +11,10 @@ class ListReviews extends Component {
         isLoaded: false,
     }
     componentDidMount() {
+        this.getlistReviews();
+    }
+
+    getlistReviews = () => {
         appService
           .listReviews()
           .then(reviewlist => {
@@ -28,25 +32,11 @@ class ListReviews extends Component {
           });
     }
 
-    handleDeleteReview = (id) => {
-        
+    handleDeleteReview = (id) => {   
         appService
           .deleteReview (id)
             .then(data => {
-                appService
-                    .listReviews()
-                        .then(reviewlist => {
-                            this.setState({
-                            reviewlist,
-                            isLoaded: true,
-                            });
-                        })
-                        .catch((error) => {
-                            this.setState({  
-                                isLoaded: true,
-                                error
-                            });
-                    });
+                this.getlistReviews();
             })
             .catch(error => {
                 console.log('no se ha borrado', error);
@@ -55,13 +45,13 @@ class ListReviews extends Component {
 
     render() {
         const {reviewlist} = this.state
+        const {user} = this.props
         console.log(reviewlist)
     return (
         <div>
             {reviewlist.map((review, index) =>{
                 return (
-                <div key={index}>
-                    
+                <div key={index}> 
                         {review.title}
                         {review.comment}
                         <StarRatingComponent 
@@ -69,11 +59,14 @@ class ListReviews extends Component {
                             starCount={5}
                             value={review.ratingBeer}
                             editing={false}
-                            />
+                        />
                         {review.creator[0].username}
                         {review.barID[0].name}
-                        <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
-                    
+                        {user.username === 'admin' && (
+                            <>
+                                <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
+                            </>
+                        )}                    
                 </div>
                 )               
             })

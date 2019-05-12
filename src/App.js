@@ -15,6 +15,7 @@ import UpdateBar from "./pages/UpdateBar";
 import ListBeers from "./components/ListBeers";
 import AddReview from "./pages/AddReview";
 import LandingPage from "./pages/LandingPage";
+import UserDetails from "./pages/UserDetails";
 import './App.scss';
 
 class App extends Component {
@@ -35,7 +36,7 @@ class App extends Component {
             <PrivateRoute path="/bars/:id/addReview" component={AddReview} />
             <PrivateRoute path="/bars/:id" component={BarDetails} />
             <PrivateRoute path="/bars" component={ListBars} />
-            
+            <PrivateRoute path="/users/:id" component={UserDetails} />
             
           </Switch>
         </div>
