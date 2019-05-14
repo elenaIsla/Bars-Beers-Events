@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+import appService from "../lib/AppService";
 
 class Signup extends Component {
   state = {
@@ -10,12 +11,38 @@ class Signup extends Component {
     neighbourhood: "", 
     beerType: null,
     beerTypeIsgoing: true,
+    favouriteBeers: [],
+    // userimage: null,
+    listBeers: [],
   };
+
+  componentDidMount() {
+    this.getlistBeer();
+  }
+
+  getlistBeer = () => {
+    appService
+      .listBeers()
+          .then(listBeers => {
+              this.setState({
+              listBeers,
+              isLoaded: true,
+              });
+            console.log(listBeers);
+          })
+          .catch((error) => {
+              this.setState({  
+                  isLoaded: true,
+                  error
+              });
+          }); 
+  }
+  
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password, city, neighbourhood, beerType } = this.state;
-    this.props.signup({ username, password, city, neighbourhood, beerType });
+    const { username, password, city, neighbourhood, beerType, favouriteBeers } = this.state;
+    this.props.signup({ username, password, city, neighbourhood, beerType, favouriteBeers });
   };
 
   handleChange = event => {
@@ -24,10 +51,20 @@ class Signup extends Component {
     console.log('CHEEEEECCK: ', name, value, this.state);
     this.setState({ [name]: value });
   };
+
+  handleCheckFavoriteBeer = event => {
+    const {value} = event.target;
+    const {favouriteBeers} = this.state;
+    console.log(value);
+    this.setState({
+        favouriteBeers: [...favouriteBeers, value]
+    })
+    console.log(favouriteBeers);
+  }
   
   render() {
     console.log('render')
-    const { username, password, city, neighbourhood, beerType } = this.state;
+    const { username, password, city, neighbourhood, listBeers, userimage, favouriteBeers } = this.state;
     return (
       <div>
         <img src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
@@ -102,17 +139,20 @@ class Signup extends Component {
             onChange={this.handleChange}
           />  
           </div>
-
-          <h3>Choose your favorite beers</h3>
-          <div className="radio-input">
-              {/* <% beers.forEach((beer) => { %> 
-                  <input type="checkbox" id="" value="<%= beer._id %>" name="favouriteBeers">
-                  <label className="radio-btn" for="favouriteBeers"><%= beer.name %></label>
-              <% }) %>     */}
-            </div>
-
-          {/* <label >Upload a picture of you</label><br>
-          <input type="file" name="image"> */}
+          <h3>Choose your favorite Beer</h3>
+               {listBeers.map((beer, index) => {
+                    return (
+                        <div key = {index}>
+                            <input 
+                               type="checkbox" 
+                                name = { favouriteBeers }
+                                value= { beer._id }
+                                onChange={this.handleCheckFavoriteBeer}
+                           />
+                             <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                         </div>
+                     )        
+                })} 
           
           <input type="submit" value="Create account" />
    

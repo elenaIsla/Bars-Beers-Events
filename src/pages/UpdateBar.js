@@ -13,15 +13,22 @@ class UpdateBar extends Component {
         draftBeer: [],
         bottleBeer: [],
         price: "",
+        listBeers: [],
         error: null,
         isLoaded: false,  
     };
 
     componentDidMount() {
+        this.getBar();
+        this.getlistbeer();
+    };
+
+    getBar = () => {
         appService
         .getupdateBar(this.props.match.params)
             .then(bar => {
                 this.setState({
+                    // bar,
                 barType: bar.barType,
                 name: bar.name,
                 categoryType: bar.category.categoryType,
@@ -42,8 +49,28 @@ class UpdateBar extends Component {
                     isLoaded: true,
                     error
                 });
+            });
+    }
+     
+
+    getlistbeer = () => {
+        appService
+        .listBeers()
+            .then(listBeers => {
+                this.setState({
+                listBeers,
+                isLoaded: true,
+                });
+                console.log(listBeers);
+            })
+            .catch((error) => {
+                this.setState({  
+                    isLoaded: true,
+                    error
+                });
             }); 
-    };
+    }
+   
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -68,9 +95,29 @@ class UpdateBar extends Component {
     this.setState({ [name]: value });
     };
 
+    handleCheckDraft = event => {
+        const {value} = event.target;
+        const {draftBeer} = this.state;
+        console.log(value);
+        this.setState({
+            draftBeer: [...draftBeer, value]
+        })
+        console.log(draftBeer);
+    }
+
+    handleCheckBottle = event => {
+        const {value} = event.target;
+        const {bottleBeer} = this.state;
+        console.log(value);
+        this.setState({
+            bottleBeer: [...bottleBeer, value]
+        })
+    }
+
     render() {
-        const { barType, name, street, neighbourhood, city, price } = this.state;
-        return (
+        const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
+        const {listBeers} = this.state;
+        return  (
         <div>
             
             <form onSubmit={this.handleFormSubmit}>
@@ -147,14 +194,28 @@ class UpdateBar extends Component {
                 name="categoryType"
                 checked={this.state.categoryType === 'Moderno'}
                 onChange={this.handleChange}/>
-        
-            
-            
-
             </div>
+            <h3>Actual Beers brands:</h3>
+            <h2>Draft Beers:</h2>
+                {draftBeer && draftBeer.map((beer,index) => {
+                    return (
+                        <div key = {index}>
+                            {beer.name}
+                        </div>
+                    )
+                })}
+            <h2>Bottle Beers:</h2>
+                {bottleBeer && bottleBeer.map((beer,index) => {
+                    return (
+                        <div key = {index}>
+                            {beer.name}
+                        </div>
+                    )
+                })}
 
-            {/* <h3>Draft Beers</h3>
-                {listBeers.map((beer, index) => {
+            <h3>Select the new Beers in case of change:</h3>
+            <h2>Draft Beers</h2>
+                {listBeers && (listBeers.map((beer, index) => {
                     return (
                         <div key = {index}>
                             <input 
@@ -166,9 +227,9 @@ class UpdateBar extends Component {
                             <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
                     )        
-                })}
-            <h3>Bottle Beers</h3>
-                {listBeers.map((beer, index) => {
+                }))}
+            <h2>Bottle Beers</h2>
+                {listBeers && (listBeers.map((beer, index) => {
                     return (
                         <div key = {index}>
                             <input 
@@ -180,8 +241,9 @@ class UpdateBar extends Component {
                             <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
                     )        
-                })} */}
+                }))}
             <label>Price range</label><br/>
+            <p>{price}</p>
             
             <label>1 - 2 €</label>
             <input 
@@ -205,7 +267,7 @@ class UpdateBar extends Component {
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
             
-            <input type="submit" value="Create BAR" /> 
+            <input type="submit" value="Update BAR" /> 
         
             </form>
         </div>

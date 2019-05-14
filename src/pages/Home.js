@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
-import ListBeers from "../components/ListBeers";
 import ListBars from "../components/ListBars";
 import ListUsers from "../components/ListUsers";
 import ListReviews from "../components/ListReviews";
+import ListBarsTop10 from "../components/ListBarsTop10";
 
 
 class Home extends Component {
+  state = {
+
+  }
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
@@ -21,9 +24,14 @@ class Home extends Component {
             </>
           ) : (<></>)}
         {/* <ListBeers/><br/> */}
-        <ListBars/><br/>
+        <h3>Top 10 Bars in your Neighbourhood:</h3>
+        <ListBarsTop10/><br/>
+        <h3>Total list of Bars:</h3>
+        <ListBars/>
+        <h3>List of Users:</h3>
         <ListUsers/>
-        <ListReviews/>
+        <h3>List of Reviews:</h3>
+        <ListReviews/> 
         
       </div>
     );

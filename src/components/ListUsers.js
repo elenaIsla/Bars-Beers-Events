@@ -10,6 +10,10 @@ class ListUsers extends Component {
         isLoaded: false,
     }
     componentDidMount() {
+        this.getlistUsers();
+    }
+
+    getlistUsers = () =>{
         appService
           .listUsers()
           .then(userlist => {
@@ -26,8 +30,20 @@ class ListUsers extends Component {
           });
     }
 
+    handleDeleteUser = (id) => {
+        appService
+          .deleteUser (id)
+            .then(data => {
+                this.getlistUsers();
+            })
+            .catch(error => {
+                console.log('no se ha borrado', error);
+            });
+    }
+
     render() {
         const {userlist} = this.state
+        const userLogged = this.props.user.username
     return (
         <div>
             {userlist.map((user, index) =>{
@@ -36,6 +52,11 @@ class ListUsers extends Component {
                         <Link to = {`/users/${user._id}`}>
                             {user.username}
                         </Link>
+                        {userLogged === 'admin' && (
+                            <>
+                                <button onClick={() => this.handleDeleteUser(user._id)}>Delete User</button>
+                            </>
+                        )} 
                     </div>
                 )               
             })

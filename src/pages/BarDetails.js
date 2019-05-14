@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import { Link } from "react-router-dom";
 
@@ -22,49 +23,47 @@ class BarDetails extends Component {
   } 
   
   componentDidMount() {
+    this.getBar();
+    this.getReviews();
+  }
+
+  getBar = () => {
     appService
       .getSingleBar(this.props.match.params)
-      .then(bar => {
-        console.log(bar);
-        this.setState({
-          bar,
-          // barType: bar.barType,
-          // name: bar.name,
-          // categoryType: bar.category.categoryType,
-          // street: bar.address.street,
-          // neighbourhood: bar.address.neighbourhood,
-          // city: bar.address.city,
-          // _id: bar._id,
-          // draftBeer: bar.draftBeer,
-          // bottleBeer:bar.bottleBeer,
-          // price: bar.price,
-          isLoaded: true,
-        });
-        console.log(bar.draftBeer);
-      })
-      .catch((error) => {
-        this.setState({  
+        .then(bar => {
+          console.log(bar);
+          this.setState({
+            bar,
             isLoaded: true,
-            error
-        });
-      }); 
-
-    appService
-    .listBeers()
-        .then(listBeers => {
-            this.setState({
-            listBeers,
-            isLoaded: true,
-            });
-            console.log(listBeers);
+          });
+          console.log(bar.draftBeer);
         })
         .catch((error) => {
-            this.setState({  
-                isLoaded: true,
-                error
-            });
+          this.setState({  
+              isLoaded: true,
+              error
+          });
         }); 
   }
+  
+  getReviews = () => {
+    appService
+      .getReviewsFrom(this.props.match.params)
+        .then(reviews => {
+          this.setState({
+            reviews,
+            isLoaded: true,
+          });
+          console.log(reviews)
+        })
+        .catch((error) => {
+          this.setState({  
+              isLoaded: true,
+              error
+          });
+        }); 
+  }
+   
 
   handleDeleteBar = () => {
     const {params} = this.props.match;
@@ -81,30 +80,66 @@ class BarDetails extends Component {
 
   render(){
     console.log(this.state.bar);
+<<<<<<< HEAD
     const { _id, barType, name, street, neighbourhood, city, price, draftBeer, bottleBeer } = this.state.bar; 
+=======
+    console.log(this.state.reviews)
+    const { _id, barType, name, street, neighbourhood, city, price, draftBeer, bottleBeer } = this.state.bar;
+    const {reviews} = this.state; 
+>>>>>>> 5807421da1b176574e0f52d45f5332782f5f7fee
     
     return this.state.bar && (
       <div>
       <h2>{name}</h2>
-      <p>{neighbourhood}, {city}</p>
+      <p>{neighbourhood}, {city}, {barType}</p>
       {street}
       {price}
+<<<<<<< HEAD
       <h2>Draft beers</h2>
         {draftBeer && draftBeer.map((beer, index) =>{
+=======
+      <h3>Draft beers</h3>
+        {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
+>>>>>>> 5807421da1b176574e0f52d45f5332782f5f7fee
           return (
             <div key = {index}>
               {beer.name}          
-            </div>  
+            </div>
             
+<<<<<<< HEAD
             )})}
       <h2>Bottle beers</h2>
         {bottleBeer && bottleBeer.map((beer, index) =>{
+=======
+          )})
+          ):(
+            <div>
+              So saaad!! Noone has registered any draft beer in this bar.
+            </div>   
+        ))}
+      <h3>Bottle beers</h3>
+        {bottleBeer && (!(bottleBeer.length === 0) ? (bottleBeer.map((beer, index) =>{
+>>>>>>> 5807421da1b176574e0f52d45f5332782f5f7fee
           return (
             <div key = {index}>
               {beer.name}          
             </div>  
-            )})}
+            )})
+            ):(
+              <div>
+                So saaad!! Noone has registered any bottle beer in this bar.
+              </div>
+        ))}
       <br/>
+      <h3>List of reviews</h3>
+      {reviews && reviews.map((review, index) => {
+        return (
+          <div key = {index}>
+            <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
+          </div>
+        )
+      })}
+      
       <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
       <button onClick={this.handleDeleteBar}>Delete Bar</button><br/>
       <Link to = {`/bars/${_id}/updateBar`}> Edit Bar </Link>
@@ -113,4 +148,4 @@ class BarDetails extends Component {
     )}
 }
 
-export default BarDetails;
+export default withAuth(BarDetails);

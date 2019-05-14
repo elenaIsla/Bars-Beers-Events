@@ -80,12 +80,36 @@ class AppService {
       .then(response => response.data);
   }
 
+  getSingleUser = (params) => {
+    const { id } = params;
+    console.log(id);
+    return this.appService
+      .get(`/bars&events/users/${id}`)
+      .then(response =>response.data)
+  }
+
+  deleteUser = (id) => {
+    return this.appService
+      .post(`/bars&events/${id}/deleteUser`)
+      .then(response =>response.data)
+  }
+
+  addBartoFavorite = (BarID, UserID) => {
+    return this.appService
+      .put(`/bars&events/${UserID}/addFavoriteBar`, {BarID})
+      .then(response => response.data)
+  }
+
+
+
+
+
   // Review methods API
 
-  createReview(id, review) {
-    const { title, comment, ratingBeer } = review;
+  createReview(review) {
+    const { id, title, comment, ratingBeer, ratingToilet, ratingMusic } = review;
     return this.appService
-      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer })
+      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer, ratingToilet, ratingMusic })
       .then(response =>response.data)
   }
 
@@ -93,6 +117,19 @@ class AppService {
     return this.appService
       .get("/bars&events/reviews")
       .then(response => response.data);
+  }
+
+  deleteReview = (id) => {
+    return this.appService
+      .post(`/bars&events/${id}/deleteReview`)
+      .then(response =>response.data)
+  }
+
+  getReviewsFrom = (params) => {
+    const {id} = params;
+    return this.appService
+      .get(`/bars&events/reviews/${id}`)
+      .then(response => response.data)
   }
 
 }
