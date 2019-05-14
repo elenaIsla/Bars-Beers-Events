@@ -51,22 +51,31 @@ class ListReviews extends Component {
         <div>
             {reviewlist.map((review, index) =>{
                 return (
-                <div key={index}> 
-                        {review.title}
-                        {review.comment}
-                        <StarRatingComponent 
+                <div className="card-container" key={index}> 
+                        <div className="bar-card-title">
+                        <div className="bar-title">
+                        <p>{review.barID[0].name}</p>
+                        <p>{review.barID[0].neighbourhood}</p>
+                        </div>
+                        
+                       <div className="card-rating"><StarRatingComponent 
                             name="ratingBeer" 
                             starCount={5}
                             value={review.ratingBeer}
                             editing={false}
-                        />
-                        {review.creator[0].username}
-                        {review.barID[0].name}
+                        /> 
+                        </div>
+                        </div>
+                      <div className="bar-card-beers">  
+                            <p>{review.creator[0].username}</p>
+                            <h3>{review.title}</h3>
+                            <p>{review.comment}</p>
                         {user.username === 'admin' && (
                             <>
                                 <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
                             </>
-                        )}                    
+                        )}  
+                        </div>                  
                 </div>
                 )               
             })

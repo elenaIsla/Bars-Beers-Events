@@ -1,0 +1,25 @@
+.nav-container {
+    background-color: $secondary;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.nav-left {
+    display: inline;
+    padding: 0 0 0 2%;
+}
+
+.nav-center {
+    align-content: center;
+}
+
+.nav-right {
+    display: grid;
+   
+    padding: 0 5% 0 0;
+}
+
