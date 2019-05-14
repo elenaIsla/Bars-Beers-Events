@@ -70,7 +70,7 @@ class UserDetails extends Component {
       <h2>{username}</h2>
       <p>{neighbourhood}, {city}</p>
       <h3>Favorite Beers:</h3>
-        {favouriteBeers ? ( favouriteBeers.map((beer, index) =>{
+        {favouriteBeers && (!(favouriteBeers.length === 0)? ( favouriteBeers.map((beer, index) =>{
           return (
                 <div key = {index}>
                 {beer.name}          
@@ -80,9 +80,9 @@ class UserDetails extends Component {
             <div>
                  So saaad!! {username} hasn't registered any favorite beer.
             </div>
-        )}
+        ))}
       <h3>Favorite Bars:</h3>
-        {favouriteBars ? (favouriteBars.map((bar, index) =>{
+        {favouriteBars && (!(favouriteBars.length === 0)? (favouriteBars.map((bar, index) =>{
           return (
             <div key = {index}>
               {bar.name}          
@@ -92,7 +92,7 @@ class UserDetails extends Component {
             <div>
                  So saaad!! {username} hasn't registered any favorite bar.
             </div>
-        )}
+        ))}
       <br/>
       <Link to = {`/bars/${_id}/updateUser`}> Edit User </Link>
       </div>

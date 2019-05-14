@@ -94,6 +94,14 @@ class AppService {
       .then(response =>response.data)
   }
 
+  addBartoFavorite = (BarID, UserID) => {
+    return this.appService
+      .put(`/bars&events/${UserID}/addFavoriteBar`, {BarID})
+      .then(response => response.data)
+  }
+
+
+
 
 
   // Review methods API
@@ -115,6 +123,13 @@ class AppService {
     return this.appService
       .post(`/bars&events/${id}/deleteReview`)
       .then(response =>response.data)
+  }
+
+  getReviewsFrom = (params) => {
+    const {id} = params;
+    return this.appService
+      .get(`/bars&events/reviews/${id}`)
+      .then(response => response.data)
   }
 
 }

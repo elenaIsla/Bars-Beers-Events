@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
-import ListBeers from "../components/ListBeers";
 import ListBars from "../components/ListBars";
 import ListUsers from "../components/ListUsers";
 import ListReviews from "../components/ListReviews";

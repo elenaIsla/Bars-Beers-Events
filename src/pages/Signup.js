@@ -60,7 +60,7 @@ class Signup extends Component {
         favouriteBeers: [...favouriteBeers, value]
     })
     console.log(favouriteBeers);
-}
+  }
   
   render() {
     console.log('render')
@@ -145,7 +145,7 @@ class Signup extends Component {
                         <div key = {index}>
                             <input 
                                type="checkbox" 
-                                name = {favouriteBeers}
+                                name = { favouriteBeers }
                                 value= { beer._id }
                                 onChange={this.handleCheckFavoriteBeer}
                            />
