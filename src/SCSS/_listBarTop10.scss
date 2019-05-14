@@ -1,0 +1,63 @@
+.card-container {
+    padding: 5% 0% 0% 0%;
+    color: $primary;
+    background-color: #F7F9F9;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    display: flex;
+    margin: 7% 7%;
+    flex-flow: column;
+    border-radius:3px;
+    
+   
+   
+}
+
+.bar-card-title {
+    text-align: center;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+
+    
+    
+}
+
+.bar-card-beers {
+    text-align: left;
+    background-color: white;
+    padding: 0% 5% 10% 5%;
+
+    
+
+}
+
+.bar-title {
+    display: grid;
+    width: 50%;
+    text-align: left;
+    padding: 0% 5%;
+    text-decoration: none;
+}
+
+.card-rating {
+    width: 50%;
+    
+}
+
+.button-card-bar {
+    padding: 3% 8%;
+    align-content: center;
+    width:60%;
+	background-color: $fifthy;
+	color:#FFF;
+	border-radius:5px;
+	text-align:center;
+    box-shadow: 2px 2px 3px #999;   
+    text-decoration: none;
+  
+}
+
+.card-home-subtitle {
+    color: grey;
+    text-decoration: none;
+}

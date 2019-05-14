@@ -64,12 +64,15 @@ class BarDetails extends Component {
     const { _id, barType, name, street, neighbourhood, city, price, draftBeer, bottleBeer } = this.state.bar; 
     
     return this.state.bar && (
-      <div>
-      <h2>{name}</h2>
+      <div className="card-container">
+      <div className="bar-card-title">
+      <h3 className="padding">{name}</h3>
       <p>{neighbourhood}, {city}</p>
-      {street}
-      {price}
+      <p>{street}, {price}</p>
+      </div>
+      <div className="bar-card-beers">
       <h3>Draft beers</h3>
+      <hr></hr>
         {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
           return (
             <div key = {index}>
@@ -79,10 +82,11 @@ class BarDetails extends Component {
           )})
           ):(
             <div>
-              So saaad!! Noone has registered any draft beer in this bar.
+              What a pity! There is no beer registered here yet!
             </div>   
         ))}
       <h3>Bottle beers</h3>
+      <hr></hr>
         {bottleBeer && (!(bottleBeer.length === 0) ? (bottleBeer.map((beer, index) =>{
           return (
             <div key = {index}>
@@ -91,14 +95,20 @@ class BarDetails extends Component {
             )})
             ):(
               <div>
-                So saaad!! Noone has registered any bottle beer in this bar.
+                What a pity! There is no beer registered here yet!
               </div>
         ))}
       <br/>
-      <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
-      <button onClick={this.handleDeleteBar}>Delete Bar</button><br/>
-      <Link to = {`/bars/${_id}/updateBar`}> Edit Bar </Link>
-      
+
+    <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
+   
+   
+      <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button>
+    
+ 
+      <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar </button></Link>
+    
+      </div>
       </div>
     )}
 }

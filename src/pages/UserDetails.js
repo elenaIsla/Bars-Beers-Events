@@ -66,9 +66,15 @@ class UserDetails extends Component {
         userimage, } = this.state.user; 
     
     return this.state.user && (
-      <div>
+      <div className="card-container">
+      <div className="bar-card-title">
+      <div className="bar-title">
       <h2>{username}</h2>
-      <p>{neighbourhood}, {city}</p>
+      <p>{neighbourhood}</p> 
+      <p>{city}</p>
+      </div>
+      </div>
+      <div className="bar-card-beers">
       <h3>Favorite Beers:</h3>
         {favouriteBeers ? ( favouriteBeers.map((beer, index) =>{
           return (
@@ -94,7 +100,8 @@ class UserDetails extends Component {
             </div>
         )}
       <br/>
-      <Link to = {`/bars/${_id}/updateUser`}> Edit User </Link>
+      <Link to = {`/bars/${_id}/updateUser`}> <button className="review-button">Edit User</button> </Link>
+      </div>
       </div>
     )}
 }

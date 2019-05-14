@@ -1,0 +1,26 @@
+.floating-button {
+    position:fixed;
+    right: 30%;
+    align-content: center;
+    width:150px;
+    padding: 2%;
+	background-color:$fourthy;
+	color:#FFF;
+	border-radius:20px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+
+}
+
+.onlyAdmin-button {
+    padding: 3% 8%;
+    margin: 10% 0%;
+    align-content: center;
+    width:60%;
+	background-color: $sixthy;
+	color:#FFF;
+	border-radius:5px;
+	text-align:center;
+    box-shadow: 2px 2px 3px #999;   
+    text-decoration: none;
+}
