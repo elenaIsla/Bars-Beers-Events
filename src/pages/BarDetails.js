@@ -74,17 +74,7 @@ class BarDetails extends Component {
     const {reviews} = this.state; 
     
     return this.state.bar && (
-<<<<<<< HEAD
-      <div>
-      <h2>{name}</h2>
-      <p>{neighbourhood}, {city}, {barType}</p>
-      {street}
-      {price}
-<<<<<<< HEAD
-      <h2>Draft beers</h2>
-        {draftBeer && draftBeer.map((beer, index) =>{
-=======
-=======
+
       <div className="card-container">
       <div className="bar-card-title">
       <h3 className="padding">{name}</h3>
@@ -92,27 +82,15 @@ class BarDetails extends Component {
       <p>{street}, {price}</p>
       </div>
       <div className="bar-card-beers">
->>>>>>> devClau
       <h3>Draft beers</h3>
       <hr></hr>
         {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
-<<<<<<< HEAD
->>>>>>> 5807421da1b176574e0f52d45f5332782f5f7fee
-=======
->>>>>>> devClau
+
           return (
             <div key = {index}>
               {beer.name}          
             </div>
-            
-<<<<<<< HEAD
-<<<<<<< HEAD
-            )})}
-      <h2>Bottle beers</h2>
-        {bottleBeer && bottleBeer.map((beer, index) =>{
-=======
-=======
->>>>>>> devClau
+
           )})
           ):(
             <div>
@@ -122,10 +100,7 @@ class BarDetails extends Component {
       <h3>Bottle beers</h3>
       <hr></hr>
         {bottleBeer && (!(bottleBeer.length === 0) ? (bottleBeer.map((beer, index) =>{
-<<<<<<< HEAD
->>>>>>> 5807421da1b176574e0f52d45f5332782f5f7fee
-=======
->>>>>>> devClau
+
           return (
             <div key = {index}>
               {beer.name}          
@@ -137,7 +112,6 @@ class BarDetails extends Component {
               </div>
         ))}
       <br/>
-<<<<<<< HEAD
       <h3>List of reviews</h3>
       {reviews && reviews.map((review, index) => {
         return (
@@ -147,22 +121,11 @@ class BarDetails extends Component {
         )
       })}
       
-      <Link to = {`/bars/${_id}/addReview`}> Add a review</Link>
-      <button onClick={this.handleDeleteBar}>Delete Bar</button><br/>
-      <Link to = {`/bars/${_id}/updateBar`}> Edit Bar </Link>
+      <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
+      <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
+      <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
       
-=======
-
-    <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
-   
-   
-      <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button>
-    
- 
-      <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar </button></Link>
-    
       </div>
->>>>>>> devClau
       </div>
     )}
 }
