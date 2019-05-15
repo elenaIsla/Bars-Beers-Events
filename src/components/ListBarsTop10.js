@@ -46,10 +46,10 @@ class ListBarsTop10 extends Component {
             return b.averageRating - a.averageRating
         })
         return listTop10.length === 0 ? (
-            <div>
+            <div className="padding">
                 <p>Ups! There is no bar in your neighbourhood yet.
                 Do you want to create the first one?</p>
-                <Link to = '/createBar'>Create Bar</Link>
+               
             </div>
         ):(
             <div>

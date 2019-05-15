@@ -23,28 +23,30 @@ class Login extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div>
+      <div className="padding">
        <img className="logo" src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
       <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
+        <label>USERNAME:</label>
         <input
           type="text"
           name="username"
           value={username}
           onChange={this.handleChange}
+          placeholder="Your username"
         />
-        <label>Password:</label>
+        <label>PASSWORD:</label>
         <input
           type="password"
           name="password"
           value={password}
           onChange={this.handleChange}
+          placeholder="********"
         />
         <input className="login-btn" type="submit" value="Login" />
       </form>
           <div>
-          <h3>DON'T HAVE AN ACCOUNT?</h3>
-          <Link to="/signup"><button className="login_link">Signup</button></Link>
+          <div><p>DON'T HAVE AN ACCOUNT?</p></div>
+          <Link to="/signup" className="singup_link">SIGNUP</Link>
           </div>
       </div>
     );

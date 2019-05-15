@@ -52,7 +52,7 @@ class AddReview extends Component {
         console.log(this.props.match.params.id)
         const { title, comment, ratingBeer, ratingToilet, ratingMusic } = this.state;
         return (
-        <div>
+        <div className="padding">
             <form onSubmit={this.handleFormSubmit}> 
             <label>Title</label><br/>
                 <input 
@@ -90,7 +90,7 @@ class AddReview extends Component {
                     value={ratingMusic}
                     onStarClick={this.onStarClickMusic}
                 /> 
-            <input type="submit" value="Create Review" />             
+            <input className="review-button"type="submit" value="Create Review" />             
             </form>
         </div>
         )

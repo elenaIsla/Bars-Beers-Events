@@ -1,16 +1,27 @@
 .login_link {
-    display: inline;
-    color: $fourthy;
+        
+    color: $fifthy;
     background-color: white;
     font-size: 1rem;
     &:hover{
     background-color: white;
     color: $secondary;
+    border: 1px solid $fifthy;
     }
 }
 .login-btn {
-    background-color: #00b084;
-    border: 1px solid #00b084;
+    padding: 3% 8%;
+    margin: 2% 0%;
+    align-content: center;
+    width: 100%;
+	background-color: $fifthy;
+	color: white;
+    border-radius:5px;
+    border: 1px solid $fifthy;
+	text-align:center;
+     
+    text-decoration: none;
+    
 }
 
 .logo {
