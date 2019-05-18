@@ -37,7 +37,6 @@ class ListBeers extends Component {
                 this.getlistbeer();
             })
             .catch(error => {
-                console.log('no se ha borrado', error);
             });
       }
 
@@ -51,6 +50,7 @@ class ListBeers extends Component {
                         <Link to = {`/beers/${beer._id}`}>
                             {beer.name}
                         </Link>
+                        <img width="200" src={beer.beerlogoImage} alt = ""/>
                         <button onClick={() => this.handleDeleteBeer(beer._id)}>Delete Beer</button>
                     </div>
                 )               

@@ -18,7 +18,6 @@ class ListReviews extends Component {
         appService
           .listReviews()
           .then(reviewlist => {
-            console.log(reviewlist)
             this.setState({
               reviewlist,
               isLoaded: true,
@@ -39,14 +38,12 @@ class ListReviews extends Component {
                 this.getlistReviews();
             })
             .catch(error => {
-                console.log('no se ha borrado', error);
             });
       }
 
     render() {
         const {reviewlist} = this.state
         const {user} = this.props
-        console.log(reviewlist)
     return (
         <div>
             {reviewlist.map((review, index) =>{
@@ -55,7 +52,7 @@ class ListReviews extends Component {
                         <div className="bar-card-title">
                         <div className="bar-title">
                         <Link to = {`/bars/${review.barID[0]._id}`}><p>{review.barID[0].name}</p></Link>
-                        <p>{review.barID[0].neighbourhood}</p>
+                        <p>{review.barID[0].address.neighbourhood}</p>
                         </div>
                         
                        <div className="card-rating"><StarRatingComponent 

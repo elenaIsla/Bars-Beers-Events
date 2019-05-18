@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
+import FileUpload from "../components/FileUpload";
 
 class CreateBeer extends Component {
     state = {
@@ -14,7 +15,6 @@ class CreateBeer extends Component {
     const { name, description, beerlogoImage} = this.state;
     appService.createBeer({ name, description, beerlogoImage })
         .then(data => {
-            console.log('ok');
             this.props.history.push('/Home');
         })
         .catch(error => {
@@ -24,14 +24,18 @@ class CreateBeer extends Component {
     };
 
     handleChange = event => {
-    console.log(event.target)
-    const { name, value } = event.target;
-    console.log(value);
-    this.setState({ [name]: value });
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
+    setImage = (url) => {
+        this.setState({
+            beerlogoImage: url
+        })
+      }
+
     render() {
-        const { name, description, beerlogoImage } = this.state;
+        const { name, description } = this.state;
         return (
         <div className="padding">
             <form onSubmit={this.handleFormSubmit}>                
@@ -50,13 +54,7 @@ class CreateBeer extends Component {
                     onChange={this.handleChange}
                     placeholder="description"/>
 
-                <label >Upload beer logo</label><br/>
-                <input 
-                    type='file' 
-                    name='image'
-                    value = {beerlogoImage}
-                    onChange={this.handleChange}
-                    />
+                <FileUpload onUploadUrl={this.setImage}/>
             
                 <input type="submit" value="Create Beer" />    
             </form>

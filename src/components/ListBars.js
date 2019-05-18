@@ -29,22 +29,17 @@ class ListBars extends Component {
         });
     }
 
-    addtoFavourite = (idBar) => {
-        const {BarID} = idBar;
-        const {_id} = this.props.user;
-        console.log(_id);   
+    addtoFavourite = (idBar) => {   
+        const {_id} = this.props.user;   
         appService
-            .addBartoFavourite(BarID, _id)
+            .addBartoFavourite(idBar, _id)
                 .then(data => {
-                    console.log('joder')
                 })
                 .catch((error) => {            
                 })
     }
     
     render() {
-        console.log(this.props.user.favouriteBars)
-        console.log (this.props.user);
         const {barlist} = this.state
     return (
         <div>

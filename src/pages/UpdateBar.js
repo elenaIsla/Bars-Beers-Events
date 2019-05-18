@@ -40,9 +40,6 @@ class UpdateBar extends Component {
                 price: bar.price,
                 isLoaded: true,
                 });
-                console.log(bar);
-                console.log( bar.address.street)
-                console.log( bar.address.city)
             })
             .catch((error) => {
                 this.setState({  
@@ -61,7 +58,6 @@ class UpdateBar extends Component {
                 listBeers,
                 isLoaded: true,
                 });
-                console.log(listBeers);
             })
             .catch((error) => {
                 this.setState({  
@@ -79,8 +75,6 @@ class UpdateBar extends Component {
         appService
             .putupdateBar(params, barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price)
                 .then(data => {
-                    console.log(params)
-                    console.log('ok');
                     this.props.history.push('/Home');
                 })
                 .catch(error => {
@@ -89,33 +83,28 @@ class UpdateBar extends Component {
         };
 
     handleChange = event => {
-    console.log(event.target)
-    const { name, value } = event.target;
-    console.log(value);
-    this.setState({ [name]: value });
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
     handleCheckDraft = event => {
         const {value} = event.target;
         const {draftBeer} = this.state;
-        console.log(value);
         this.setState({
             draftBeer: [...draftBeer, value]
         })
-        console.log(draftBeer);
     }
 
     handleCheckBottle = event => {
         const {value} = event.target;
         const {bottleBeer} = this.state;
-        console.log(value);
         this.setState({
             bottleBeer: [...bottleBeer, value]
         })
     }
 
     render() {
-        const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
+        const { barType, name, street, neighbourhood, city, draftBeer, bottleBeer } = this.state;
         const {listBeers} = this.state;
         return  (
         <div className="padding">

@@ -24,7 +24,6 @@ class CreateBar extends Component {
                 listBeers,
                 isLoaded: true,
                 });
-               console.log(listBeers);
             })
             .catch((error) => {
                 this.setState({  
@@ -39,7 +38,6 @@ class CreateBar extends Component {
     const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price} = this.state;
     appService.createBar({ barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price })
         .then(data => {
-            console.log('ok');
             this.props.history.push('/Home');
         })
         .catch(error => {
@@ -49,33 +47,28 @@ class CreateBar extends Component {
     };
 
     handleChange = event => {
-    console.log(event.target)
-    const { name, value } = event.target;
-    console.log(value);
-    this.setState({ [name]: value });
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
     handleCheckDraft = event => {
         const {value} = event.target;
         const {draftBeer} = this.state;
-        console.log(value);
         this.setState({
             draftBeer: [...draftBeer, value]
         })
-        console.log(draftBeer);
     }
 
     handleCheckBottle = event => {
         const {value} = event.target;
         const {bottleBeer} = this.state;
-        console.log(value);
         this.setState({
             bottleBeer: [...bottleBeer, value]
         })
     }
 
     render() {
-        const { barType, name, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
+        const { barType, name, street, neighbourhood, city, draftBeer, bottleBeer } = this.state;
         const {listBeers} = this.state;
         return (
         <div className="padding">
@@ -174,7 +167,7 @@ class CreateBar extends Component {
                                 value= { beer._id }
                                 onChange={this.handleCheckDraft}
                             />
-                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            <img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
                     )        
                 })}
@@ -188,7 +181,7 @@ class CreateBar extends Component {
                                 value= { beer._id }
                                 onChange={this.handleCheckBottle}
                             />
-                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            <img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
                         </div>
                     )        
                 })}

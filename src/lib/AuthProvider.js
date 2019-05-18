@@ -17,6 +17,7 @@ export const withAuth = Comp => {
                 user={authStore.user}
                 logout={authStore.logout}
                 isLoggedin={authStore.isLoggedin}
+                message={authStore.message}
                 {...this.props}
               />
             );
@@ -32,6 +33,7 @@ class AuthProvider extends Component {
     isLoggedin: false,
     user: null,
     isLoading: true,
+    message: ""
   };
 
   componentDidMount() {
@@ -65,7 +67,7 @@ class AuthProvider extends Component {
       })
       .catch(({ response: { data: error } }) => {
         this.setState({
-          message: error.statusMessage
+          message: error.message
         });
       });
   };
@@ -95,7 +97,7 @@ class AuthProvider extends Component {
       .catch(() => {});
   };
   render() {
-    const { isLoading, isLoggedin, user } = this.state;
+    const { isLoading, isLoggedin, user, message } = this.state;
     return isLoading ? (
       <div>Loading</div>
     ) : (
@@ -105,7 +107,8 @@ class AuthProvider extends Component {
           user,
           login: this.login,
           logout: this.logout,
-          signup: this.signup
+          signup: this.signup,
+          message,
         }}
       >
         {this.props.children}

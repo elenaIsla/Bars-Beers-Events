@@ -42,14 +42,11 @@ class AddReview extends Component {
     };
 
     handleChange = event => {
-    console.log(event.target)
-    const { name, value } = event.target;
-    console.log(value);
-    this.setState({ [name]: value });
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
     render() {
-        console.log(this.props.match.params.id)
         const { title, comment, ratingBeer, ratingToilet, ratingMusic } = this.state;
         return (
         <div className="padding">

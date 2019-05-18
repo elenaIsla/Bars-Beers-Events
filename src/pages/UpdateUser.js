@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 
@@ -25,7 +24,6 @@ class UpdateUser extends Component {
     appService
       .getSingleUser(this.props.match.params)
         .then(user => {
-            console.log(user);
             this.setState({
                 _id: user._id,
                 username: user.username,
@@ -54,7 +52,6 @@ class UpdateUser extends Component {
               listBeers,
               isLoaded: true,
               });
-            console.log(listBeers);
           })
           .catch((error) => {
               this.setState({  
@@ -79,7 +76,6 @@ class UpdateUser extends Component {
   };
 
   handleChange = event => {
-    console.log(event.target)
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -87,15 +83,12 @@ class UpdateUser extends Component {
   handleCheckFavoriteBeer = event => {
     const {value} = event.target;
     const {favouriteBeers} = this.state;
-    console.log(value);
     this.setState({
         favouriteBeers: [...favouriteBeers, value]
     })
-    console.log(favouriteBeers);
   }
   
   render() {
-    console.log('render')
     const { username, city, neighbourhood, beerType, favouriteBeers } = this.state;
     const {listBeers} = this.state;
     return (

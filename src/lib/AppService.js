@@ -87,11 +87,6 @@ class AppService {
       .then(response =>response.data)
   }
 
-  deleteFromFavorite = (idUser, idBar) => {
-    return this.appService
-      .put(`/bars&events/${idUser}/deleteFavourite`, {idBar})
-  }
-
   updateUser = (user) => {
     const {_id, username, password, city, neighbourhood, beerType, favouriteBeers } = user;
     return this.appService
@@ -106,10 +101,16 @@ class AppService {
       .then(response =>response.data)
   }
 
-  addBartoFavourite = (BarID, _id) => {
+  addBartoFavourite = (BarID, id) => {
     console.log('pero aqui')
     return this.appService
-      .post(`/bars&events/addFavoriteBar/${_id}`, {BarID})
+      .post(`/bars&events/addFavoriteBar/${id}`, {BarID})
+      .then(response => response.data)
+  }
+
+  deleteFromFavorite = (idUser, idBar) => {
+    return this.appService
+      .post(`/bars&events/${idUser}/deleteFavourite`, {idBar})
       .then(response => response.data)
   }
 

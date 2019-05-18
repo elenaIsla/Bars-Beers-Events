@@ -19,7 +19,6 @@ class UserDetails extends Component {
     appService
       .getSingleUser(this.props.match.params)
         .then(user => {
-            console.log(user);
             this.setState({
             user,
             isLoaded: true,
@@ -42,7 +41,6 @@ class UserDetails extends Component {
             listBeers,
             isLoaded: true,
             });
-            console.log(listBeers);
         })
         .catch((error) => {
             this.setState({  
@@ -54,10 +52,8 @@ class UserDetails extends Component {
 
 
   render(){
-    console.log(this.state.user);
     const { _id, 
         username, 
-        password, 
         city,
         neighbourhood,
         beerType,  
@@ -72,11 +68,16 @@ class UserDetails extends Component {
       <div className="bar-card-title">
       <div className="bar-title">
       <h2>{username}</h2>
-      <p>{neighbourhood}</p> 
+      <p>{neighbourhood}</p>
+      <div>
+        <img width="100" src={userimage} alt=""></img>
+      </div>
       <p>{city}</p>
       </div>
       </div>
       <div className="bar-card-beers">
+      <h3>Favorite type of beers:</h3>
+      {beerType}
       <h3>Favorite Beers:</h3>
         {favouriteBeers && (!(favouriteBeers.length === 0)? ( favouriteBeers.map((beer, index) =>{
           return (

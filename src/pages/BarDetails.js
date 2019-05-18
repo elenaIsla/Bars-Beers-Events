@@ -7,6 +7,7 @@ class BarDetails extends Component {
 
   state = {
     bar: {},
+    address: {},
     error: null,
     isLoaded: false,
   } 
@@ -20,12 +21,11 @@ class BarDetails extends Component {
     appService
       .getSingleBar(this.props.match.params)
         .then(bar => {
-          console.log(bar);
           this.setState({
             bar,
+            address: bar.address,
             isLoaded: true,
           });
-          console.log(bar.draftBeer);
         })
         .catch((error) => {
           this.setState({  
@@ -43,7 +43,6 @@ class BarDetails extends Component {
             reviews,
             isLoaded: true,
           });
-          console.log(reviews)
         })
         .catch((error) => {
           this.setState({  
@@ -59,27 +58,27 @@ class BarDetails extends Component {
     appService
       .deleteBar(params)
       .then(data => {
-        console.log('ok');
         this.props.history.push('/home');
       })
       .catch(error => {
-        console.log('no se ha borrado', error);
       }); 
   }
 
   render(){
-    console.log(this.state.bar);
-    console.log(this.state.reviews)
-    const { _id, barType, name, street, neighbourhood, city, price, draftBeer, bottleBeer } = this.state.bar;
-    const {reviews} = this.state; 
+
+    const { _id, barType, name, price, draftBeer, bottleBeer } = this.state.bar;
+    const {street, neighbourhood, city} = this.state.address;
+    const {reviews} = this.state;   
     
     return this.state.bar && (
 
       <div className="card-container">
       <div className="bar-card-title">
       <h3 className="padding">{name}</h3>
-      <p>{neighbourhood}, {city}</p>
+      <p>{neighbourhood}</p> 
+      <p>{city}</p>
       <p>{street}</p>
+      <p>{barType}</p>
       <p>
       {(() => {
         switch (price) {

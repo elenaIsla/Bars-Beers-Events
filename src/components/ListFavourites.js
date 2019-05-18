@@ -17,7 +17,6 @@ class ListUsers extends Component {
         appService
           .getSingleUser(this.props.match.params)
             .then(user => {
-                console.log(user.favouriteBars);
                 this.setState({
                 favouritelist: user.favouriteBars,
                 isLoaded: true,
@@ -41,7 +40,6 @@ class ListUsers extends Component {
                 this.getlistFavourites();
             })
             .catch(error => {
-                console.log('no se ha borrado', error);
             });
     }
 
