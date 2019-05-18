@@ -121,15 +121,6 @@ class BarDetails extends Component {
         ))}
       <br/>
       <h3>List of reviews</h3>
-<<<<<<< HEAD
-        {reviews && reviews.map((review, index) => {
-          return (
-            <div key = {index}>
-              <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
-            </div>
-          )
-        })}
-=======
       {reviews && reviews.map((review, index) => {
         return (
           <div key = {index}>
@@ -146,7 +137,6 @@ class BarDetails extends Component {
             </>
           ) : (<></>)}
            <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
->>>>>>> devClau
       
       
       </div>
