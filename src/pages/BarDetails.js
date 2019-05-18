@@ -120,10 +120,16 @@ class BarDetails extends Component {
           </div>
         )
       })}
+      {this.props.user.username === 'admin' ? (
+            <>
+           
+            <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
+           <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
+         
+            </>
+          ) : (<></>)}
+           <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
       
-      <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
-      <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
-      <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
       
       </div>
       </div>

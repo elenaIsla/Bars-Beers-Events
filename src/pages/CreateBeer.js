@@ -33,7 +33,7 @@ class CreateBeer extends Component {
     render() {
         const { name, description, beerlogoImage } = this.state;
         return (
-        <div>
+        <div className="padding">
             <form onSubmit={this.handleFormSubmit}>                
                 <label>Beer name</label><br/>
                 <input 

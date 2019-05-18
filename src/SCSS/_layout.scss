@@ -5,7 +5,7 @@ $fourthy: #ec9336;
 $fifthy: #1fbb3b;
 $sixthy: #3d397c;
 $seventhy: #1d1d26;
-$eighty: #3d3d3d;
+$eighty: #efeff4;
 $font-primary: 'Open Sans', sans-serif;
 $font-secundary: 'Roboto', cursive;
 $font-size: 16px;
@@ -30,19 +30,20 @@ html {
         p {
             
             color: $primary;
-            line-height: 1.1em;
+            line-height: 1.2rem;
             text-decoration: none;
+            font-size: 0.9rem;
         }
         h1 {
            
             font-family: $font-primary;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: $primary;
             text-decoration: none;
         }
         h2 {
             font-family: $font-primary;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: $primary;
             text-decoration: none;
         }
@@ -70,7 +71,7 @@ html {
             text-decoration: none;
         }
         .padding {
-         padding: 5%;
+         padding: 0% 5%;
         }
         .margin {
             margin: 10% 0;
@@ -78,9 +79,11 @@ html {
         
         label {
             color: $seventhy;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-align: left;
             padding: 10px 0 0;
+            line-height: 1.8rem;
+            margin: 5% 0 0 0;
             
         }
         
@@ -100,7 +103,8 @@ html {
             border: none;
             border-bottom: 1px solid $eighty;
             color: $eighty;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            line-height: 1.3rem;
           }
         
           input[type=password] {
@@ -110,7 +114,9 @@ html {
             border: none;
             border-bottom: 1px solid $eighty;
             color: $eighty;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            line-height: 1.3rem;
+           
           }
           
         input:-webkit-autofill,
@@ -122,16 +128,16 @@ html {
         
         select {
             padding: 5px 0px;
-            font-size: 1.1rem;
+            font-size: 1rem;
         
         }
         input[type=radio] {
-            padding: 0 10px 0 0;
+            padding: 2% 5% 0 3%;
            
         }
         
         input[type=checkbox] {
-            padding: 5px 10px 0 5px;
+            padding: 2% 5% 0 3%;
         }
 
         

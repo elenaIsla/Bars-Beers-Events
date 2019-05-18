@@ -74,7 +74,11 @@ class ListReviews extends Component {
                             <>
                                 <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
                             </>
-                        )}  
+                        )} 
+
+                        <Link to = {`/bars/${review.barID[0]._id}`}>
+                            <button className="button-card-bar">Know more</button>
+                 </Link> 
                         </div>                  
                 </div>
                 )               

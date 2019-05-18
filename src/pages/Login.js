@@ -24,7 +24,8 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <div className="padding">
-       <img className="logo" src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
+      <div className="container-login">
+       <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
       <form onSubmit={this.handleFormSubmit}>
         <label>USERNAME:</label>
         <input
@@ -44,6 +45,7 @@ class Login extends Component {
         />
         <input className="login-btn" type="submit" value="Login" />
       </form>
+      </div>
           <div>
           <div><p>DON'T HAVE AN ACCOUNT?</p></div>
           <Link to="/signup" className="singup_link">SIGNUP</Link>

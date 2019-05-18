@@ -15,7 +15,7 @@ class Home extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <div>
-        <h3 className="padding">Welcome {this.props.user.username}</h3>
+  
         <Link to = "/createBar" className="floating-button">Create Bar</Link><br/>
           {user.username === 'admin' ? (
             <>

@@ -49,7 +49,7 @@ class ListBarsTop10 extends Component {
             <div className="padding">
                 <p>Ups! There is no bar in your neighbourhood yet.
                 Do you want to create the first one?</p>
-               
+                <Link to = "/createBar">Create Bar</Link><br/>
             </div>
         ):(
             <div>

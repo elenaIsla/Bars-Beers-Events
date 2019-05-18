@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import StarRatingComponent from 'react-star-rating-component';
+import beer from '../beer.svg';
 
 class AddReview extends Component {
     state = {
@@ -9,9 +10,8 @@ class AddReview extends Component {
         comment: "", 
         ratingBeer: 1,
         ratingToilet: 1,
-        ratingMusic: 1
-        
-              
+        ratingMusic: 1,
+               
     };
 
     onStarClickBeer = (nextValue, prevValue, name) => {
@@ -73,7 +73,11 @@ class AddReview extends Component {
                 <StarRatingComponent 
                     name="ratingBeer" 
                     starCount={5}
+                             
+                    starColor="#fbde45"
+                    emptyStarColor="#efeff4"
                     value={ratingBeer}
+                    renderStarIcon={() => <img src={beer} alt="beer"/>}
                     onStarClick={this.onStarClickBeer}
                 /> 
             <h2>Rating Toilet: {ratingToilet}</h2>

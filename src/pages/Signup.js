@@ -67,7 +67,8 @@ class Signup extends Component {
     const { username, password, city, neighbourhood, listBeers, userimage, favouriteBeers } = this.state;
     return (
       <div className="padding">
-        <img className="logo" src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
+      <div className="container-login">
+        <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
         <form onSubmit={this.handleFormSubmit}>
 
           <label>USERNAME:</label>
@@ -157,7 +158,7 @@ class Signup extends Component {
           <input className="signUp-btn" type="submit" value="Create account" />
    
         </form>
-
+        </div>
         <div><p className="color-grey">ALREADY HAVE AN ACCOUNT?</p> 
           <Link to={"/login"} className="login_link">LOGIN</Link>
           </div>
