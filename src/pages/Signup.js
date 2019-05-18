@@ -67,11 +67,12 @@ class Signup extends Component {
   render() {
     const { username, password, city, neighbourhood, listBeers, favouriteBeers } = this.state;
     return (
-      <div>
-        <img src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
+      <div className="padding">
+      <div className="container-login">
+        <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
         <form onSubmit={this.handleFormSubmit}>
 
-          <label>Username:</label>
+          <label>USERNAME:</label>
           <input 
             type="text"
             name="username"
@@ -80,7 +81,7 @@ class Signup extends Component {
             placeholder="Your username"
           />
 
-          <label>Password</label>
+          <label>PASSWORD</label>
           <input 
             type="password" 
             name="password" 
@@ -89,7 +90,7 @@ class Signup extends Component {
             placeholder="********"
           />
 
-          <label>City:</label>
+          <label>CITY:</label>
           <div className="styled-select blue semi-square">
           <select 
             name="city" 
@@ -104,7 +105,7 @@ class Signup extends Component {
               <option value="Bilbao">Bilbao</option>
           </select>
           </div>
-          <label>Neighbourhood:</label>
+          <label>NEIGHBOURHOOD:</label>
           <div className="styled-select blue semi-square">
           <select 
             name="neighbourhood" 
@@ -119,7 +120,7 @@ class Signup extends Component {
               <option value="La Barceloneta">La Barceloneta</option>
           </select>
           </div>
-          <h3>Choose your favourite Beer Type</h3>
+          <p className="color-grey">CHOOSE YOUR FAVOURITE BEER TYPE</p>
           <div className="radio-input">
           <label className="radio-btn">Draft</label>
           <input 
@@ -140,7 +141,7 @@ class Signup extends Component {
             onChange={this.handleChange}
           />  
           </div>
-          <h3>Choose your favorite Beer</h3>
+          <p className="color-grey">CHOOSE YOUR FAVOURITE BEER</p>
                {listBeers.map((beer, index) => {
                     return (
                         <div key = {index}>
@@ -156,12 +157,12 @@ class Signup extends Component {
                 })} 
           <FileUpload onUploadUrl={this.setImage}/>
           
-          <input type="submit" value="Create account" />
+          <input className="signUp-btn" type="submit" value="Create account" />
    
         </form>
-
-        <div><p>Already have account?</p> 
-          <Link to={"/login"}> <button>Login</button></Link>
+        </div>
+        <div><p className="color-grey">ALREADY HAVE AN ACCOUNT?</p> 
+          <Link to={"/login"} className="login_link">LOGIN</Link>
           </div>
 
       </div>

@@ -118,10 +118,11 @@ class UpdateBar extends Component {
         const { barType, name, categoryType, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
         const {listBeers} = this.state;
         return  (
-        <div>
+        <div className="padding">
             
             <form onSubmit={this.handleFormSubmit}>
-            <label>Type of bar:</label>
+            <label>TYPE OF BAR:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="barType" 
                 id="barType"
@@ -134,9 +135,10 @@ class UpdateBar extends Component {
                 <option value="Casa">Casa</option>
                 <option value="Cockteleria">Cockteleria</option>
                 <option value="Cafeteria">Cafeteria</option>
-            </select><br/>
+            </select>
+            </div>
 
-            <label>Bar name</label><br/>
+            <label>BAR NAME</label>
             <input 
                 type="text" 
                 name="name"
@@ -145,8 +147,8 @@ class UpdateBar extends Component {
                 placeholder="Bar name" 
             /><br/>  
 
-            <h3>Address</h3>
-            <label>Street:</label>
+            <p className="color-grey">Address</p>
+            <label>STREET:</label>
             <input 
                 type="text" 
                 name="street"
@@ -154,7 +156,8 @@ class UpdateBar extends Component {
                 placeholder="C/..."
                 onChange={this.handleChange}
             />
-            <label>City:</label>
+            <label>CITY:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="city" 
                 id="city"
@@ -164,7 +167,9 @@ class UpdateBar extends Component {
                 <option value="Almeria">Almería</option>
                 <option value="Madrid">Madrid</option>
             </select>
-            <label>Neighbourhood:</label>
+            </div>
+            <label>NEIGHBOURHOOD:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="neighbourhood" 
                 id="neighbourhood"
@@ -176,9 +181,10 @@ class UpdateBar extends Component {
                 <option value="Borne">Borne</option>
                 <option value="Gótico">Gótico</option>
                 <option value="Sarria">Sarria</option> 
-            </select>     
+            </select>  
+            </div>   
             
-            <label>Select Category</label><br/>
+            <label>Select Category</label>
             <div className="checkbox">
             <label>Cutre</label>
             <input 
@@ -195,26 +201,28 @@ class UpdateBar extends Component {
                 checked={this.state.categoryType === 'Moderno'}
                 onChange={this.handleChange}/>
             </div>
-            <h3>Actual Beers brands:</h3>
-            <h2>Draft Beers:</h2>
+            <p className="color-grey">CURRENT BEER BRANDS:</p>
+            <hr></hr>
+            <p className="color-grey">Draft Beers:</p>
                 {draftBeer && draftBeer.map((beer,index) => {
                     return (
                         <div key = {index}>
-                            {beer.name}
+                            <p>{beer.name}</p>
                         </div>
                     )
                 })}
-            <h2>Bottle Beers:</h2>
+            <p className="color-grey">Bottle Beers:</p>
                 {bottleBeer && bottleBeer.map((beer,index) => {
                     return (
                         <div key = {index}>
-                            {beer.name}
+                           <p> {beer.name}</p>
                         </div>
                     )
                 })}
 
-            <h3>Select the new Beers in case of change:</h3>
-            <h2>Draft Beers</h2>
+            <p className="color-grey">DO YOU WANT TO CHANGE YOUR BEERS?</p>
+            <hr></hr>
+            <p className="color-grey">Draft Beers</p>
                 {listBeers && (listBeers.map((beer, index) => {
                     return (
                         <div key = {index}>
@@ -228,7 +236,7 @@ class UpdateBar extends Component {
                         </div>
                     )        
                 }))}
-            <h2>Bottle Beers</h2>
+            <p className="color-grey">Bottle Beers</p>
                 {listBeers && (listBeers.map((beer, index) => {
                     return (
                         <div key = {index}>
@@ -243,7 +251,7 @@ class UpdateBar extends Component {
                     )        
                 }))}
             <label>Price range</label><br/>
-            <p>{price}</p>
+        
             
             <label>1 - 2 €</label>
             <input 
@@ -267,7 +275,7 @@ class UpdateBar extends Component {
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
             
-            <input type="submit" value="Update BAR" /> 
+            <input className="review-button" type="submit" value="Update bar" /> 
         
             </form>
         </div>

@@ -121,6 +121,7 @@ class BarDetails extends Component {
         ))}
       <br/>
       <h3>List of reviews</h3>
+<<<<<<< HEAD
         {reviews && reviews.map((review, index) => {
           return (
             <div key = {index}>
@@ -128,10 +129,25 @@ class BarDetails extends Component {
             </div>
           )
         })}
+=======
+      {reviews && reviews.map((review, index) => {
+        return (
+          <div key = {index}>
+            <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
+          </div>
+        )
+      })}
+      {this.props.user.username === 'admin' ? (
+            <>
+           
+            <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
+           <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
+         
+            </>
+          ) : (<></>)}
+           <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
+>>>>>>> devClau
       
-      <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
-      <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
-      <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
       
       </div>
       </div>

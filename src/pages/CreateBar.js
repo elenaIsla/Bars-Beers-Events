@@ -78,10 +78,11 @@ class CreateBar extends Component {
         const { barType, name, street, neighbourhood, city, draftBeer, bottleBeer, price } = this.state;
         const {listBeers} = this.state;
         return (
-        <div>
+        <div className="padding">
             
             <form onSubmit={this.handleFormSubmit}>
             <label>Type of bar:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="barType" 
                 id="barType"
@@ -94,7 +95,8 @@ class CreateBar extends Component {
                 <option value="Casa">Casa</option>
                 <option value="Cockteleria">Cockteleria</option>
                 <option value="Cafeteria">Cafeteria</option>
-            </select><br/>
+            </select>
+            </div>
 
             <label>Bar name</label><br/>
             <input 
@@ -133,6 +135,7 @@ class CreateBar extends Component {
                 onChange={this.handleChange}
             />
             <label>City:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="city" 
                 id="city"
@@ -142,7 +145,9 @@ class CreateBar extends Component {
                 <option value="Almeria">Almería</option>
                 <option value="Madrid">Madrid</option>
             </select>
+            </div>
             <label>Neighbourhood:</label>
+            <div className="styled-select blue semi-square">
             <select 
                 name="neighbourhood" 
                 id="neighbourhood"
@@ -155,6 +160,7 @@ class CreateBar extends Component {
                 <option value="Gótico">Gótico</option>
                 <option value="Sarria">Sarria</option> 
             </select>
+            </div>
 
             </div>
 
@@ -210,7 +216,7 @@ class CreateBar extends Component {
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
             
-            <input type="submit" value="Create BAR" /> 
+            <input className="review-button" type="submit" value="Create bar" /> 
         
             </form>
         </div>
