@@ -16,7 +16,16 @@ import ListBeers from "./components/ListBeers";
 import AddReview from "./pages/AddReview";
 import LandingPage from "./pages/LandingPage";
 import UserDetails from "./pages/UserDetails";
+import UpdateUser from "./pages/UpdateUser";
+import ListFavourites from "./components/ListFavourites";
 import './App.scss';
+
+import firebase from 'firebase';
+
+const config = {
+  storageBucket: 'gs://barsandevents.appspot.com/'
+}
+firebase.initializeApp(config);
 
 class App extends Component {
   render() {
@@ -36,6 +45,8 @@ class App extends Component {
             <PrivateRoute path="/bars/:id/addReview" component={AddReview} />
             <PrivateRoute path="/bars/:id" component={BarDetails} />
             <PrivateRoute path="/bars" component={ListBars} />
+            <PrivateRoute path="/users/:id/updateUser" component={UpdateUser} />
+            <PrivateRoute path="/users/:id/listFavourite" component={ListFavourites} />
             <PrivateRoute path="/users/:id" component={UserDetails} />
             
           </Switch>

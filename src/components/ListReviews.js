@@ -54,7 +54,7 @@ class ListReviews extends Component {
                 <div className="card-container" key={index}> 
                         <div className="bar-card-title">
                         <div className="bar-title">
-                        <p>{review.barID[0].name}</p>
+                        <Link to = {`/bars/${review.barID[0]._id}`}><p>{review.barID[0].name}</p></Link>
                         <p>{review.barID[0].neighbourhood}</p>
                         </div>
                         
@@ -67,7 +67,7 @@ class ListReviews extends Component {
                         </div>
                         </div>
                       <div className="bar-card-beers">  
-                            <p>{review.creator[0].username}</p>
+                            <Link to = {`/users/${review.creator[0]._id}`}><p>{review.creator[0].username}</p></Link>
                             <h3>{review.title}</h3>
                             <p>{review.comment}</p>
                         {user.username === 'admin' && (

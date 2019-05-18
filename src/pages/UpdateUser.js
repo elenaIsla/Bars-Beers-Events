@@ -2,22 +2,48 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
-import FileUpload from "../components/FileUpload";
 
-class Signup extends Component {
+class UpdateUser extends Component {
   state = {
+    _id: "",
     username: "",
-    password: "",
     city: "", 
     neighbourhood: "", 
     beerType: null,
+    beerTypeIsgoing: true,
     favouriteBeers: [],
-    userimage: "",
+    // userimage: null,
     listBeers: [],
   };
 
   componentDidMount() {
+    this.getUser();
     this.getlistBeer();
+  }
+
+  getUser = () => {
+    appService
+      .getSingleUser(this.props.match.params)
+        .then(user => {
+            console.log(user);
+            this.setState({
+                _id: user._id,
+                username: user.username,
+                city: user.name, 
+                neighbourhood: user.neighbourhood, 
+                beerType: user.beerType,
+                favouriteBeers: user.favouriteBeers,
+                // userimage: null,
+                isLoaded: true,
+            });
+        })
+        .catch((error) => {
+            this.setState({  
+                isLoaded: true,
+                error
+            });
+        });
+
   }
 
   getlistBeer = () => {
@@ -41,11 +67,19 @@ class Signup extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { username, password, city, neighbourhood, beerType, favouriteBeers, userimage } = this.state;
-    this.props.signup({ username, password, city, neighbourhood, beerType, favouriteBeers, userimage });
+    const {_id, username, city, neighbourhood, beerType, favouriteBeers } = this.state;
+    appService
+        .updateUser( {_id, username, city, neighbourhood, beerType, favouriteBeers} )
+            .then(data => {
+                this.props.history.push('/Home');
+            })
+            .catch(error => {
+                console.log('tu bar no se ha creado', error);
+            });
   };
 
   handleChange = event => {
+    console.log(event.target)
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -53,19 +87,17 @@ class Signup extends Component {
   handleCheckFavoriteBeer = event => {
     const {value} = event.target;
     const {favouriteBeers} = this.state;
+    console.log(value);
     this.setState({
         favouriteBeers: [...favouriteBeers, value]
     })
-  }
-
-  setImage = (url) => {
-    this.setState({
-      userimage: url
-    })
+    console.log(favouriteBeers);
   }
   
   render() {
-    const { username, password, city, neighbourhood, listBeers, favouriteBeers } = this.state;
+    console.log('render')
+    const { username, city, neighbourhood, beerType, favouriteBeers } = this.state;
+    const {listBeers} = this.state;
     return (
       <div>
         <img src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
@@ -78,15 +110,6 @@ class Signup extends Component {
             value={username}
             onChange={this.handleChange}
             placeholder="Your username"
-          />
-
-          <label>Password</label>
-          <input 
-            type="password" 
-            name="password" 
-            value={password}
-            onChange={this.handleChange}
-            placeholder="********"
           />
 
           <label>City:</label>
@@ -127,7 +150,7 @@ class Signup extends Component {
             id="draft" 
             value='Draft' 
             name= 'beerType'
-            checked={this.state.beerType === 'Draft'}
+            checked={beerType === 'Draft'}
             onChange={this.handleChange}
           />
           <label className="radio-btn">Bottle</label>
@@ -136,37 +159,37 @@ class Signup extends Component {
             id="bottle" 
             value='Bottle' 
             name='beerType'
-            checked={this.state.beerType === 'Bottle'}
+            checked={beerType === 'Bottle'}
             onChange={this.handleChange}
           />  
           </div>
-          <h3>Choose your favorite Beer</h3>
-               {listBeers.map((beer, index) => {
-                    return (
-                        <div key = {index}>
-                            <input 
-                               type="checkbox" 
-                                name = { favouriteBeers }
-                                value= { beer._id }
-                                onChange={this.handleCheckFavoriteBeer}
-                           />
-                             <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
-                         </div>
-                     )        
-                })} 
-          <FileUpload onUploadUrl={this.setImage}/>
-          
-          <input type="submit" value="Create account" />
-   
+          <h3>Favourite Beer:</h3>
+            {favouriteBeers && favouriteBeers.map((beer, index) => {
+                return (
+                    <div key = {index}>
+                        {beer.name}
+                    </div>
+                )
+            })}   
+          <h3>Change your favoruite Beer:</h3>
+            {listBeers && listBeers.map((beer, index) => {
+                return (
+                    <div key = {index}>
+                        <input 
+                            type="checkbox" 
+                            name = { favouriteBeers }
+                            value= { beer._id }
+                            onChange={this.handleCheckFavoriteBeer}
+                        />
+                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                        </div>
+                    )        
+            })}          
+          <input type="submit" value="UpDate Profile" />   
         </form>
-
-        <div><p>Already have account?</p> 
-          <Link to={"/login"}> <button>Login</button></Link>
-          </div>
-
       </div>
     );
   }
 }
 
-export default withAuth(Signup);
+export default withAuth(UpdateUser);

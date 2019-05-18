@@ -11,7 +11,7 @@ class ListBarsTop10 extends Component {
     }
     componentDidMount() {
         this.getlistBars();
-       this.getlistBarsByNeighbourhood();
+        this.getlistBarsByNeighbourhood();
     }
     getlistBars = () => {
         appService
@@ -36,7 +36,6 @@ class ListBarsTop10 extends Component {
             return bar.address.neighbourhood === neighbourhood;
         })
         return listBarsFiltered;
-
     }
 
     getTop10Rating = () => {

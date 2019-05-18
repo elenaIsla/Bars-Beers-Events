@@ -79,13 +79,22 @@ class BarDetails extends Component {
       <div className="bar-card-title">
       <h3 className="padding">{name}</h3>
       <p>{neighbourhood}, {city}</p>
-      <p>{street}, {price}</p>
+      <p>{street}</p>
+      <p>
+      {(() => {
+        switch (price) {
+          case "range1":   return "1 - 2 €";
+          case "range2": return "2 - 3 €";
+          case "range3":  return "3 - 4 €";
+          default:      return "No range price added";
+        }
+      })()}
+      </p>
       </div>
       <div className="bar-card-beers">
       <h3>Draft beers</h3>
       <hr></hr>
         {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
-
           return (
             <div key = {index}>
               {beer.name}          
@@ -100,7 +109,6 @@ class BarDetails extends Component {
       <h3>Bottle beers</h3>
       <hr></hr>
         {bottleBeer && (!(bottleBeer.length === 0) ? (bottleBeer.map((beer, index) =>{
-
           return (
             <div key = {index}>
               {beer.name}          
@@ -113,13 +121,13 @@ class BarDetails extends Component {
         ))}
       <br/>
       <h3>List of reviews</h3>
-      {reviews && reviews.map((review, index) => {
-        return (
-          <div key = {index}>
-            <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
-          </div>
-        )
-      })}
+        {reviews && reviews.map((review, index) => {
+          return (
+            <div key = {index}>
+              <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
+            </div>
+          )
+        })}
       
       <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
       <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>

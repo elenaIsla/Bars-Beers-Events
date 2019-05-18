@@ -15,7 +15,8 @@ class Navbar extends Component {
            <img src={process.env.PUBLIC_URL + "images/nav-logo.png"} alt="logo"/>
           </div>
           <div className="nav-right">
-            <p>{user.username}</p>
+            <Link to = {`/users/${user._id}`}>{user.username}</Link>
+            <Link to = {`/users/${user._id}/listFavourite`}>Favourites</Link>
             <button onClick={logout}>Logout</button>
           </div>
          

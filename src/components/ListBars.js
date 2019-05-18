@@ -29,17 +29,16 @@ class ListBars extends Component {
         });
     }
 
-    addtoFavorite = (idBar) => {
-        const BarID = idBar;
-        const UserID = this.props.user._id;
-        
+    addtoFavourite = (idBar) => {
+        const {BarID} = idBar;
+        const {_id} = this.props.user;
+        console.log(_id);   
         appService
-            .addBartoFavorite(BarID, UserID)
+            .addBartoFavourite(BarID, _id)
                 .then(data => {
-                    console.log(BarID,UserID)
+                    console.log('joder')
                 })
-                .catch((error) => {
-                    
+                .catch((error) => {            
                 })
     }
     
@@ -55,7 +54,7 @@ class ListBars extends Component {
                     <Link to = {`/bars/${bar._id}`}>
                         {bar.name}
                     </Link>
-                    <button onClick = {this.addtoFavorite(bar._id)}>Add to Favorite</button>
+                    <button onClick = {() => {this.addtoFavourite(bar._id)}}>Add to Favorite</button>
                 </div>
                 )               
             })

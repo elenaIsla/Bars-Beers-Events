@@ -63,7 +63,9 @@ class UserDetails extends Component {
         beerType,  
         favouriteBeers,
         favouriteBars, 
-        userimage, } = this.state.user; 
+        userimage, } = this.state.user;
+    
+    const userLogged = this.props.user.username;
     
     return this.state.user && (
       <div className="card-container">
@@ -100,7 +102,10 @@ class UserDetails extends Component {
             </div>
         ))}
       <br/>
-      <Link to = {`/bars/${_id}/updateUser`}> <button className="review-button">Edit User</button> </Link>
+      {!(userLogged === username) && (
+      <Link to = {`/users/${_id}/updateUser`}> <button className="review-button">Edit User</button> </Link>
+      )}
+      
       </div>
       </div>
     )}
