@@ -160,33 +160,37 @@ class CreateBar extends Component {
             <h3>Draft Beers</h3>
                 {listBeers.map((beer, index) => {
                     return (
-                        <div key = {index}>
-                            <input 
+                        <div className="beer-radio" key = {index}>
+                            <div className="center"><input 
                                 type="checkbox" 
                                 name = {draftBeer}
                                 value= { beer._id }
                                 onChange={this.handleCheckDraft}
                             />
-                            <img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            </div>
+                          <div>  
+                              <img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                          </div>
                         </div>
                     )        
                 })}
             <h3>Bottle Beers</h3>
                 {listBeers.map((beer, index) => {
                     return (
-                        <div key = {index}>
-                            <input 
+                        <div className="beer-radio" key = {index}>
+                            <div className="center"><input 
                                 type="checkbox" 
                                 name = {bottleBeer} 
                                 value= { beer._id }
                                 onChange={this.handleCheckBottle}
                             />
-                            <img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            </div>
+                            <div><img width = "100" className="img-size" src= { beer.beerlogoImage } alt = {beer.name} /></div>
                         </div>
                     )        
                 })}
             <label>Price range</label><br/>
-            
+            <div>
             <label>1 - 2 €</label>
             <input 
                 type="radio" 
@@ -194,6 +198,8 @@ class CreateBar extends Component {
                 name="price"
                 checked={this.state.price === 'range1'}
                 onChange={this.handleChange}/>
+                </div>
+           <div>
             <label>2 - 3 €</label>
             <input 
                 type="radio" 
@@ -201,6 +207,8 @@ class CreateBar extends Component {
                 name="price"
                 checked={this.state.price === 'range2'}
                 onChange={this.handleChange}/>
+            </div>
+            <div>
             <label>3 - 4 €</label>
             <input 
                 type="radio" 
@@ -208,6 +216,7 @@ class CreateBar extends Component {
                 name="price"
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
+            </div>
             
             <input className="review-button" type="submit" value="Create bar" /> 
         

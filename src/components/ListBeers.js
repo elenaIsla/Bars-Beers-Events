@@ -43,15 +43,15 @@ class ListBeers extends Component {
     render() {
         const {beerlist} = this.state
     return (
-        <div>
+        <div className="padding">
             {beerlist.map((beer, index) =>{
                 return (
                     <div key={index}>
-                        <Link to = {`/beers/${beer._id}`}>
-                            {beer.name}
-                        </Link>
+                       
+                            <h3>{beer.name}</h3>
+                      
                         <img width="200" src={beer.beerlogoImage} alt = ""/>
-                        <button onClick={() => this.handleDeleteBeer(beer._id)}>Delete Beer</button>
+                        <button className="review-button"onClick={() => this.handleDeleteBeer(beer._id)}>Delete Beer</button>
                     </div>
                 )               
             })

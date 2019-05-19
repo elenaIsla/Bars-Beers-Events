@@ -56,7 +56,7 @@ class CreateBeer extends Component {
 
                 <FileUpload onUploadUrl={this.setImage}/>
             
-                <input type="submit" value="Create Beer" />    
+                <input className="review-button" type="submit" value="Create Beer" />    
             </form>
         </div>
         )

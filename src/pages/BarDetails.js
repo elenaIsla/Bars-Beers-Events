@@ -66,7 +66,7 @@ class BarDetails extends Component {
 
   render(){
 
-    const { _id, barType, name, price, draftBeer, bottleBeer } = this.state.bar;
+    const { _id, barType, name, price, draftBeer, bottleBeer, ratingBeer, ratingToilet, ratingMusic } = this.state.bar;
     const {street, neighbourhood, city} = this.state.address;
     const {reviews} = this.state;   
     
@@ -74,11 +74,13 @@ class BarDetails extends Component {
 
       <div className="card-container">
       <div className="bar-card-title">
-      <h3 className="padding">{name}</h3>
+      <div className="padding">
+      <h3>{name}</h3>
       <p>{neighbourhood}</p> 
       <p>{city}</p>
       <p>{street}</p>
       <p>{barType}</p>
+     
       <p>
       {(() => {
         switch (price) {
@@ -90,7 +92,22 @@ class BarDetails extends Component {
       })()}
       </p>
       </div>
+      </div>
       <div className="bar-card-beers">
+        <div>
+        <div>
+          <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="beer"/>
+          <p>Beers {ratingBeer}</p>
+        </div>
+        <div>
+          <img src={process.env.PUBLIC_URL + "images/beer.svg"} alt="beer"/>
+          <p>Toilet {ratingToilet}</p>
+        </div>
+        <div>
+          <img src={process.env.PUBLIC_URL + "images/beer.svg"} alt="beer"/>
+          <p>Music {ratingMusic}</p>
+        </div>
+        </div>
       <h3>Draft beers</h3>
       <hr></hr>
         {draftBeer && (!(draftBeer.length === 0) ? (draftBeer.map((beer, index) =>{
@@ -120,18 +137,27 @@ class BarDetails extends Component {
         ))}
       <br/>
       <h3>List of reviews</h3>
+      <hr></hr>
       {reviews && reviews.map((review, index) => {
         return (
-          <div key = {index}>
-            <p>{review.title},   {review.comment},  {review.creator[0].username}</p>
+          <div className="grid-flex" 
+            key = {index}>
+        <div className="padding box">
+        <img className=" circle-avatar" src={review.creator[0].userimage} alt=""></img>
+          </div>
+          <div className="half-box">
+            <h3>{review.title}</h3> 
+            <p>{review.comment}</p>
+          </div>
+          
           </div>
         )
       })}
       {this.props.user.username === 'admin' ? (
             <>
            
-            <button onClick={this.handleDeleteBar} className="review-button">Delete Bar</button><br/>
-           <Link to = {`/bars/${_id}/updateBar`}> <button className="review-button">Edit Bar</button> </Link>
+            <button onClick={this.handleDeleteBar} className="admin-button">Delete Bar</button><br/>
+           <Link to = {`/bars/${_id}/updateBar`}> <button className="admin-button">Edit Bar</button> </Link>
          
             </>
           ) : (<></>)}

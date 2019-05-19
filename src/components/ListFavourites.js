@@ -47,14 +47,15 @@ class ListUsers extends Component {
         
         const {favouritelist} = this.state
     return (
-        <div>
+        <div className="padding">
             {favouritelist && favouritelist.map((bar, index) =>{
                 return (
                     <div key={index}>
                         <Link to = {`/bars/${bar._id}`}>
-                            {bar.name}
+                           <h3> {bar.name} </h3>
+                
                         </Link>
-                        <button onClick={() => this.handleDeleteFavourite(bar._id)}>Delete From Favourite</button>   
+                        <button className="admin-button" onClick={() => this.handleDeleteFavourite(bar._id)}>Delete From Favourite</button>   
                     </div>
                 )               
             })

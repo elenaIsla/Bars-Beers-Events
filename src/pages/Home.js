@@ -17,16 +17,7 @@ class Home extends Component {
       <div>
   
         <Link to = "/createBar" className="floating-button">Create Bar</Link><br/>
-          {user.username === 'admin' ? (
-            <>
-            <div className="padding">
-            <div className="margin">
-            <Link to = "/createBeer"  className="onlyAdmin-button">Create Beer</Link></div>
-            <div className="margin">
-            <Link to = "/listBeers" className="onlyAdmin-button">Go to Beers</Link></div>
-            </div>
-            </>
-          ) : (<></>)}
+
         {/* <ListBeers/><br/> */}
         <h3 className="padding">Top 10 Bars near you:</h3>
         <ListBarsTop10/><br/>
@@ -37,6 +28,16 @@ class Home extends Component {
         <ListBars/></div>
         <div className="padding"><h3>List of Users:</h3>
         <ListUsers/></div>
+        {user.username === 'admin' ? (
+            <>
+            <div className="width padding">
+          
+            <Link to = "/createBeer"><button className="delete-button">Create Beer</button></Link>
+          
+            <Link to = "/listBeers"><button className="delete-button">Go to Beers</button></Link>
+            </div>
+            </>
+          ) : (<></>)}
         
       </div>
     );

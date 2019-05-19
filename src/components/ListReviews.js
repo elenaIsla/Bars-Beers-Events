@@ -55,28 +55,36 @@ class ListReviews extends Component {
                         <p>{review.barID[0].address.neighbourhood}</p>
                         </div>
                         
-                       <div className="card-rating"><StarRatingComponent 
-                            name="ratingBeer" 
-                            starCount={5}
-                            value={review.ratingBeer}
-                            editing={false}
-                        /> 
+                       <div className="card-rating">
+                       <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="logo"/>
+                       <p>Rating: {review.barID[0].averageRating.toFixed(1)}</p>
                         </div>
                         </div>
-                      <div className="bar-card-beers">  
-                            <Link to = {`/users/${review.creator[0]._id}`}><p>{review.creator[0].username}</p></Link>
+                      <div className="bar-card-beers grid-flex">  
+                            <div className="box">
+                                <Link to = {`/users/${review.creator[0]._id}`}>
+                            <img className="circle-avatar" src={review.creator[0].userimage} alt=""></img>
+
+                            </Link>
+                            </div>
+                            <div className="half-box">
                             <h3>{review.title}</h3>
                             <p>{review.comment}</p>
-                        {user.username === 'admin' && (
-                            <>
-                                <button onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
-                            </>
-                        )} 
+                            </div>
 
+                        
+                        </div> 
+                        <div className="width padding">
                         <Link to = {`/bars/${review.barID[0]._id}`}>
                             <button className="button-card-bar">Know more</button>
-                 </Link> 
-                        </div>                  
+                        </Link> 
+                        
+                        {user.username === 'admin' && (
+                            <>
+                                <button className="delete-button" onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
+                            </>
+                        )} 
+                        </div>                 
                 </div>
                 )               
             })

@@ -23,3 +23,36 @@
     padding: 0 5% 0 0;
 }
 
+.nav-img {
+    padding: 0 5%;
+    
+}
+
+.nav-right ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.nav-right a {
+    display: block;
+    padding: 2em;
+    background-color: $secondary;
+    text-decoration: none;
+    color: $primary;
+}
+.nav-right a:hover {
+    background-color: $secondary;
+}
+.nav-right ul li ul {
+    display: none;
+}
+
+.nav-right ul li a:hover + ul, 
+.nav-right ul li ul:hover {
+    display: block;
+    background-color: $secondary; 
+    border: 1px solid $terciary;
+    position: absolute;
+}
+

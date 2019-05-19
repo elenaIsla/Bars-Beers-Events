@@ -82,7 +82,11 @@ class AuthProvider extends Component {
           user
         });
       })
-      .catch(() => {});
+      .catch(({ response: { data: error } }) => {
+        this.setState({
+          message: error.message
+        });
+      });
   };
 
   logout = () => {

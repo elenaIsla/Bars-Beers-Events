@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
     return (
-        <div>
-            <h1>Bars and Events</h1>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
+        <div className="landing">
+    
+            <img src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
+            <p className="landing-text">Find the bars with your favourite beers</p>
+            <Link to="/login"><button className="login-btn">Login</button></Link>
+            <Link to="/signup"><button className="signUp-btn">Signup</button></Link>
         </div>
     )
 }

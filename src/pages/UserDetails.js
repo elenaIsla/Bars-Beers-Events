@@ -66,14 +66,19 @@ class UserDetails extends Component {
     return this.state.user && (
       <div className="card-container">
       <div className="bar-card-title">
-      <div className="bar-title">
-      <h2>{username}</h2>
-      <p>{neighbourhood}</p>
-      <div>
-        <img width="100" src={userimage} alt=""></img>
-      </div>
-      <p>{city}</p>
-      </div>
+      <div className="bar-title grid-flex">
+  
+        <div className="padding box-avatar">
+            <img className="circle-avatar" src={userimage} alt=""></img>
+        </div>
+        <div className="half-box-avatar">
+          <h2>{username}</h2>
+          <p>{neighbourhood}</p>
+        
+          <p>{city}</p>
+          </div>
+          </div>
+       
       </div>
       <div className="bar-card-beers">
       <h3>Favorite type of beers:</h3>

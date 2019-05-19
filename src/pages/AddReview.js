@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import StarRatingComponent from 'react-star-rating-component';
-import beer from '../beer.svg';
+
 
 class AddReview extends Component {
     state = {
@@ -66,31 +66,33 @@ class AddReview extends Component {
                     value = {comment}
                     onChange={this.handleChange}
                     placeholder="Write your comment"/> 
-            <h2>Rating Beers: {ratingBeer}</h2>
-                <StarRatingComponent 
+            <h3>Rating Beers: {ratingBeer}</h3>
+               <div className="align-center"> 
+                    <StarRatingComponent 
                     name="ratingBeer" 
                     starCount={5}
-                             
-                    starColor="#fbde45"
-                    emptyStarColor="#efeff4"
-                    value={ratingBeer}
-                    renderStarIcon={() => <img src={beer} alt="beer"/>}
+                    value={ratingBeer}      
                     onStarClick={this.onStarClickBeer}
-                /> 
-            <h2>Rating Toilet: {ratingToilet}</h2>
+                    /> 
+                </div>
+            <h3>Rating Toilet: {ratingToilet}</h3>
+            <div className="align-center">
                 <StarRatingComponent 
                     name="ratingToilet" 
                     starCount={5}
                     value={ratingToilet}
                     onStarClick={this.onStarClickToilet}
                 /> 
-            <h2>Rating Music: {ratingMusic}</h2>
-                <StarRatingComponent 
+            </div>
+            <h3>Rating Music: {ratingMusic}</h3>
+            <div className="align-center"> 
+            <StarRatingComponent 
                     name="ratingMusic" 
                     starCount={5}
                     value={ratingMusic}
                     onStarClick={this.onStarClickMusic}
                 /> 
+            </div>
             <input className="review-button"type="submit" value="Create Review" />             
             </form>
         </div>

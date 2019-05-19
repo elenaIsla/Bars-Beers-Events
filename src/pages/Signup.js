@@ -68,7 +68,7 @@ class Signup extends Component {
     const error = this.props.message;
     return (
       <div className="padding">
-      <div>{error}</div>
+
       <div className="container-login">
         <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
         <form onSubmit={this.handleFormSubmit}>
@@ -145,14 +145,16 @@ class Signup extends Component {
           <p className="color-grey">CHOOSE YOUR FAVOURITE BEER</p>
                {listBeers.map((beer, index) => {
                     return (
-                        <div key = {index}>
+                        <div className="center" key = {index}>
                             <input 
                                type="checkbox" 
                                 name = { favouriteBeers }
                                 value= { beer._id }
                                 onChange={this.handleCheckFavoriteBeer}
                            />
-                             <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                           <div>
+                             <img width = "100" src= { beer.beerlogoImage } alt = {beer.name} />
+                             </div>
                          </div>
                      )        
                 })} 
@@ -165,7 +167,7 @@ class Signup extends Component {
         <div><p className="color-grey">ALREADY HAVE AN ACCOUNT?</p> 
           <Link to={"/login"} className="login_link">LOGIN</Link>
           </div>
-
+          <div className="alert animateOpen alert-danger">{error}</div>
       </div>
     );
   }

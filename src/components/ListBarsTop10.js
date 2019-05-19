@@ -62,6 +62,7 @@ class ListBarsTop10 extends Component {
                         <p>{bar.address.neighbourhood}</p>
                     </div>
                     <div className="card-rating">
+                    <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="logo"/>
                     <p>Rating: {bar.averageRating.toFixed(1)}</p>
                     </div>
                     </div>
