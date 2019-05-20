@@ -14,7 +14,7 @@ class Home extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className="margin">
   
         <Link to = "/createBar" className="floating-button">Create Bar</Link><br/>
 
@@ -32,9 +32,9 @@ class Home extends Component {
             <>
             <div className="width padding">
           
-            <Link to = "/createBeer"><button className="delete-button">Create Beer</button></Link>
+            <Link to = "/createBeer"><button className="delete-button margin">Create Beer</button></Link>
           
-            <Link to = "/listBeers"><button className="delete-button">Go to Beers</button></Link>
+            <Link to = "/listBeers"><button className="delete-button margin">Go to Beers</button></Link>
             </div>
             </>
           ) : (<></>)}

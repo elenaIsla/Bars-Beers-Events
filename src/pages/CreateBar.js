@@ -74,7 +74,7 @@ class CreateBar extends Component {
         <div className="padding">
             
             <form onSubmit={this.handleFormSubmit}>
-            <label>Type of bar:</label>
+            <label><h3>Type of bar:</h3></label>
             <div className="styled-select blue semi-square">
             <select 
                 name="barType" 
@@ -91,7 +91,7 @@ class CreateBar extends Component {
             </select>
             </div>
 
-            <label>Bar name</label><br/>
+            <label><h3>Bar name</h3></label><br/>
             <input 
                 type="text" 
                 name="name"
@@ -100,7 +100,7 @@ class CreateBar extends Component {
                 placeholder="Bar name" 
             /><br/>       
             
-            <label>Select Category</label><br/>
+            <label><h3>Select Category</h3></label><br/>
             <div className="checkbox">
             <label>Cutre</label>
             <input 
@@ -189,7 +189,7 @@ class CreateBar extends Component {
                         </div>
                     )        
                 })}
-            <label>Price range</label><br/>
+            <label><h3>Price range</h3></label><br/>
             <div>
             <label>1 - 2 €</label>
             <input 

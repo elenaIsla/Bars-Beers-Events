@@ -10,7 +10,8 @@
 
 .nav-left {
     display: inline;
-    padding: 0 0 0 5%;
+    
+    margin: 0 5%;
 }
 
 .nav-center {
@@ -18,8 +19,7 @@
 }
 
 .nav-right {
-    display: grid;
-   
+    display: grid;   
     padding: 0 5% 0 0;
 }
 
@@ -30,7 +30,7 @@
 
 .nav-right ul {
     display: flex;
-    padding: 0;
+    padding: 0 5% 0 0;
     margin: 0;
     list-style: none;
 }
@@ -53,6 +53,10 @@
     display: block;
     background-color: $secondary; 
     border: 1px solid $terciary;
+    
     position: absolute;
 }
 
+.paddingTen {
+    padding: 0 20%;
+}

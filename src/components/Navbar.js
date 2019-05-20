@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
+
+
+
 class Navbar extends Component {
   render() {
     const { user, logout, isLoggedin } = this.props;
@@ -17,12 +20,12 @@ class Navbar extends Component {
           <div className="nav-right">
            <ul>
              <li>
-             <Link to = {`/home`}> <img width="35" src={process.env.PUBLIC_URL + "images/user.svg"} alt="user"/></Link>
+             <Link to = {`/home`}> <img width= "35" src={process.env.PUBLIC_URL + "images/user.svg"} alt="user"/></Link>
              
                     <ul>
                         <li><Link to = {`/users/${user._id}`}>{user.username}</Link></li>
                         <li><Link to = {`/users/${user._id}/listFavourite`}>Favourites</Link></li>
-                        <li><p className="padding" onClick={logout}>Logout</p></li>
+                        <li><p className="paddingTen" onClick={logout}>Logout</p></li>
                     </ul>
             </li>
           </ul>

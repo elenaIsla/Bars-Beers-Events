@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
+import beer from "../beer.svg";
 
 class ListBarsTop10 extends Component { 
     state = {
@@ -58,11 +59,11 @@ class ListBarsTop10 extends Component {
                     <Link to = {`/bars/${bar._id}`}>
                     <div className="bar-card-title">
                     <div className="bar-title">
-                       <p> {bar.name}</p>
+                       <h3> {bar.name}</h3>
                         <p>{bar.address.neighbourhood}</p>
                     </div>
-                    <div className="card-rating">
-                    <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="logo"/>
+                    <div className="flex column">
+                    <img src={beer} alt="logo"/>
                     <p>Rating: {bar.averageRating.toFixed(1)}</p>
                     </div>
                     </div>
@@ -87,8 +88,8 @@ class ListBarsTop10 extends Component {
                  )})}  
                 
 
-                <Link to = {`/bars/${bar._id}`} className="button-card-bar">
-                 Know more
+                <Link to = {`/bars/${bar._id}`}>
+                 <button className="button-card-bar width">Know more</button>
                  </Link>
             </div>
             

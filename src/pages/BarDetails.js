@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import { Link } from "react-router-dom";
+import beer from "../beer.svg";
 
 class BarDetails extends Component {
 
@@ -93,19 +94,19 @@ class BarDetails extends Component {
       </p>
       </div>
       </div>
-      <div className="bar-card-beers">
-        <div>
-        <div>
-          <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="beer"/>
-          <p>Beers {ratingBeer}</p>
+      <div className="bar-card-beers padding">
+        <div className="flex padding">
+        <div className="center column">
+          <img src={beer} alt="beer"/>
+          <p className="align-center">Beers: {ratingBeer}</p>
         </div>
-        <div>
-          <img src={process.env.PUBLIC_URL + "images/beer.svg"} alt="beer"/>
-          <p>Toilet {ratingToilet}</p>
+        <div className="center column">
+        <img src={beer} alt="beer"/>
+          <p className="align-center">Toilet: {ratingToilet}</p>
         </div>
-        <div>
-          <img src={process.env.PUBLIC_URL + "images/beer.svg"} alt="beer"/>
-          <p>Music {ratingMusic}</p>
+        <div className="center column">
+        <img src={beer} alt="beer"/>
+          <p className="align-center">Music: {ratingMusic}</p>
         </div>
         </div>
       <h3>Draft beers</h3>

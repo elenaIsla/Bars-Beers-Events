@@ -110,7 +110,7 @@ class UpdateBar extends Component {
         <div className="padding">
             
             <form onSubmit={this.handleFormSubmit}>
-            <label>TYPE OF BAR:</label>
+            <label><h3>TYPE OF BAR:</h3></label>
             <div className="styled-select blue semi-square">
             <select 
                 name="barType" 
@@ -127,7 +127,7 @@ class UpdateBar extends Component {
             </select>
             </div>
 
-            <label>BAR NAME</label>
+            <label><h3>BAR NAME</h3></label>
             <input 
                 type="text" 
                 name="name"
@@ -136,7 +136,7 @@ class UpdateBar extends Component {
                 placeholder="Bar name" 
             /><br/>  
 
-            <p className="color-grey">Address</p>
+            <h3 className="color-grey">Address</h3>
             <label>STREET:</label>
             <input 
                 type="text" 
@@ -173,7 +173,7 @@ class UpdateBar extends Component {
             </select>  
             </div>   
             
-            <label>Select Category</label>
+            <label><h3>Select Category</h3></label>
             <div className="checkbox">
             <label>Cutre</label>
             <input 
@@ -190,9 +190,9 @@ class UpdateBar extends Component {
                 checked={this.state.categoryType === 'Moderno'}
                 onChange={this.handleChange}/>
             </div>
-            <p className="color-grey">CURRENT BEER BRANDS:</p>
+            <h3 className="color-grey">CURRENT BEER BRANDS:</h3>
             <hr></hr>
-            <p className="color-grey">Draft Beers:</p>
+            <h3 className="color-grey">Draft Beers:</h3>
                 {draftBeer && draftBeer.map((beer,index) => {
                     return (
                         <div key = {index}>
@@ -200,7 +200,7 @@ class UpdateBar extends Component {
                         </div>
                     )
                 })}
-            <p className="color-grey">Bottle Beers:</p>
+            <h3 className="color-grey">Bottle Beers:</h3>
                 {bottleBeer && bottleBeer.map((beer,index) => {
                     return (
                         <div key = {index}>
@@ -209,37 +209,39 @@ class UpdateBar extends Component {
                     )
                 })}
 
-            <p className="color-grey">DO YOU WANT TO CHANGE YOUR BEERS?</p>
+            <h3 className="color-grey">DO YOU WANT TO CHANGE YOUR BEERS?</h3>
             <hr></hr>
             <p className="color-grey">Draft Beers</p>
                 {listBeers && (listBeers.map((beer, index) => {
                     return (
-                        <div key = {index}>
-                            <input 
+                        <div className="beer-radio" key = {index}>
+                            <div className="center"><input 
                                 type="checkbox" 
                                 name = {draftBeer}
                                 value= { beer._id }
                                 onChange={this.handleCheckDraft}
                             />
-                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            </div>
+                            <div><img width="100" src= { beer.beerlogoImage } alt = {beer.name} /></div>
                         </div>
                     )        
                 }))}
             <p className="color-grey">Bottle Beers</p>
                 {listBeers && (listBeers.map((beer, index) => {
                     return (
-                        <div key = {index}>
-                            <input 
+                        <div className="beer-radio" key = {index}>
+                           <div className="center"><input 
                                 type="checkbox" 
                                 name = {bottleBeer} 
                                 value= { beer._id }
                                 onChange={this.handleCheckBottle}
                             />
-                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                            </div> 
+                            <div><img width="100" src= { beer.beerlogoImage } alt = {beer.name} /></div>
                         </div>
                     )        
                 }))}
-            <label>Price range</label><br/>
+            <label><h3>Price range</h3></label><br/>
         
             
             <label>1 - 2 €</label>

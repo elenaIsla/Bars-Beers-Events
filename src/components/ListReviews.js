@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
-import StarRatingComponent from 'react-star-rating-component';
+import beer from "../beer.svg";
 
 class ListReviews extends Component { 
     state = {
@@ -51,12 +51,13 @@ class ListReviews extends Component {
                 <div className="card-container" key={index}> 
                         <div className="bar-card-title">
                         <div className="bar-title">
-                        <Link to = {`/bars/${review.barID[0]._id}`}><p>{review.barID[0].name}</p></Link>
-                        <p>{review.barID[0].address.neighbourhood}</p>
+                        <Link to = {`/bars/${review.barID[0]._id}`}>
+                            <h3>{review.barID[0].name}</h3></Link>
+                            <p>{review.barID[0].address.neighbourhood}</p>
                         </div>
                         
-                       <div className="card-rating">
-                       <img src={process.env.PUBLIC_URL + "images/beer_favourite.png"} alt="logo"/>
+                       <div className="flex-column">
+                       <img className="paddingTen" src={beer} alt="logo"/>
                        <p>Rating: {review.barID[0].averageRating.toFixed(1)}</p>
                         </div>
                         </div>
@@ -81,7 +82,7 @@ class ListReviews extends Component {
                         
                         {user.username === 'admin' && (
                             <>
-                                <button className="delete-button" onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
+                                <button className="delete-button margin" onClick={() => this.handleDeleteReview(review._id)}>Delete review</button>
                             </>
                         )} 
                         </div>                 

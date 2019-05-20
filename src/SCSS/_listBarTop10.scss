@@ -13,7 +13,7 @@
 }
 
 .bar-card-title {
-    text-align: center;
+    
     display: flex;
     width: 100%;
     text-decoration: none;
@@ -40,7 +40,9 @@
 }
 
 .card-rating {
-    width: 50%;
+    display: inline; 
+    
+  
     
 }
 

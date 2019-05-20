@@ -67,7 +67,7 @@ class Signup extends Component {
     const { username, password, city, neighbourhood, listBeers, favouriteBeers } = this.state;
     const error = this.props.message;
     return (
-      <div className="padding">
+      <div className="padding margin">
 
       <div className="container-login">
         <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
