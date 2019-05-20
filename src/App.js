@@ -17,6 +17,7 @@ import AddReview from "./pages/AddReview";
 import LandingPage from "./pages/LandingPage";
 import UserDetails from "./pages/UserDetails";
 import UpdateUser from "./pages/UpdateUser";
+import FilterBars from "./pages/FilterBars";
 import ListFavourites from "./components/ListFavourites";
 import './App.scss';
 
@@ -48,6 +49,7 @@ class App extends Component {
             <PrivateRoute path="/users/:id/updateUser" component={UpdateUser} />
             <PrivateRoute path="/users/:id/listFavourite" component={ListFavourites} />
             <PrivateRoute path="/users/:id" component={UserDetails} />
+            <PrivateRoute path="/filter/bars" component={FilterBars} />
             
           </Switch>
         </div>

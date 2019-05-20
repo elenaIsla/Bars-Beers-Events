@@ -27,7 +27,8 @@ class Home extends Component {
             </div>
             </>
           ) : (<></>)}
-        {/* <ListBeers/><br/> */}
+        <Link to = "/filter/bars" className="onlyAdmin-button">Filter</Link>
+        
         <h3 className="padding">Top 10 Bars near you:</h3>
         <ListBarsTop10/><br/>
        

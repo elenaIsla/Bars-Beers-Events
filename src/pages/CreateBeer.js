@@ -32,7 +32,7 @@ class CreateBeer extends Component {
         this.setState({
             beerlogoImage: url
         })
-      }
+    }
 
     render() {
         const { name, description } = this.state;
