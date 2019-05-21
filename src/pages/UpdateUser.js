@@ -92,11 +92,10 @@ class UpdateUser extends Component {
     const { username, city, neighbourhood, beerType, favouriteBeers } = this.state;
     const {listBeers} = this.state;
     return (
-      <div>
-        <img src={process.env.PUBLIC_URL + "images/logo.jpg"} alt="logo"/>
+      <div className="padding">
         <form onSubmit={this.handleFormSubmit}>
 
-          <label>Username:</label>
+          <label>USERNAME:</label>
           <input 
             type="text"
             name="username"
@@ -105,7 +104,7 @@ class UpdateUser extends Component {
             placeholder="Your username"
           />
 
-          <label>City:</label>
+          <label>CITY:</label>
           <div className="styled-select blue semi-square">
           <select 
             name="city" 
@@ -120,7 +119,7 @@ class UpdateUser extends Component {
               <option value="Bilbao">Bilbao</option>
           </select>
           </div>
-          <label>Neighbourhood:</label>
+          <label>NEIGHBOURHOOD:</label>
           <div className="styled-select blue semi-square">
           <select 
             name="neighbourhood" 
@@ -135,7 +134,8 @@ class UpdateUser extends Component {
               <option value="La Barceloneta">La Barceloneta</option>
           </select>
           </div>
-          <h3>Choose your favourite Beer Type</h3>
+          <p>CHOOSE YOUR FAVOURITE BEER TYPE</p>
+          <hr></hr>
           <div className="radio-input">
           <label className="radio-btn">Draft</label>
           <input 
@@ -156,7 +156,8 @@ class UpdateUser extends Component {
             onChange={this.handleChange}
           />  
           </div>
-          <h3>Favourite Beer:</h3>
+          <p>FAVOURITE BEER:</p>
+          <hr></hr>
             {favouriteBeers && favouriteBeers.map((beer, index) => {
                 return (
                     <div key = {index}>
@@ -164,21 +165,24 @@ class UpdateUser extends Component {
                     </div>
                 )
             })}   
-          <h3>Change your favoruite Beer:</h3>
+          <p className="color-grey">CHANGE YOUR FAVOURITE BEER:</p>
             {listBeers && listBeers.map((beer, index) => {
                 return (
-                    <div key = {index}>
-                        <input 
+                    <div className="beer-radio" key = {index}>
+                        <div className="center"><input 
                             type="checkbox" 
                             name = { favouriteBeers }
                             value= { beer._id }
                             onChange={this.handleCheckFavoriteBeer}
                         />
-                            <img className="img-size" src= { beer.beerlogoImage } alt = {beer.name} />
+                        </div> 
+                            <div>
+                              <img width="100" src= { beer.beerlogoImage } alt = {beer.name} />
+                            </div>
                         </div>
                     )        
             })}          
-          <input type="submit" value="UpDate Profile" />   
+          <input className="review-button margin" type="submit" value="UpDate Profile" />   
         </form>
       </div>
     );

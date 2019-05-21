@@ -108,7 +108,7 @@ class UserDetails extends Component {
             </div>
         ))}
       <br/>
-      {!(userLogged === username) && (
+      {(userLogged === username) && (
       <Link to = {`/users/${_id}/updateUser`}> <button className="review-button">Edit User</button> </Link>
       )}
       

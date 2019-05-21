@@ -48,8 +48,8 @@ class ListBarsTop10 extends Component {
         return listTop10.length === 0 ? (
             <div className="padding">
                 <p>Ups! There is no bar in your neighbourhood yet.
-                Do you want to create the first one?</p>
-                <Link to = "/createBar">Create Bar</Link><br/>
+                Be the first to create one!</p>
+             
             </div>
         ):(
             <div>
@@ -73,7 +73,7 @@ class ListBarsTop10 extends Component {
             <hr></hr>
                 <p>Drafted Beers: </p>
                     {bar.draftBeer.map((beer, index) =>{
-          return (
+                return (
             <p key = {index}>
               {beer.name}         
             </p>
@@ -89,7 +89,7 @@ class ListBarsTop10 extends Component {
                 
 
                 <Link to = {`/bars/${bar._id}`}>
-                 <button className="button-card-bar width">Know more</button>
+                 <button className="button-card-bar">Know more</button>
                  </Link>
             </div>
             

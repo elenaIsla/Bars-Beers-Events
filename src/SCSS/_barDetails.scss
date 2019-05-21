@@ -25,3 +25,28 @@
     font-size: 0.9rem;
     text-decoration: none;
 }
+.class-picture-slide {
+    // padding: 5px;
+	// height: 110px;
+	// width: 500px;
+	// overflow: hidden;
+	// overflow-x: scroll;
+    // border: 1px solid #000;
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+// .class-porta-picture{
+//     width: 1100px;
+//     height: 110px;
+// 	overflow: hidden;
+// }
+
+.class-imagen {
+    padding: 2px;
+    display: inline-block;
+}

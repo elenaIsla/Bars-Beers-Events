@@ -115,15 +115,12 @@ class AppService {
   }
 
 
-
-
-
   // Review methods API
 
   createReview(review) {
-    const { id, title, comment, ratingBeer, ratingToilet, ratingMusic } = review;
+    const { id, title, comment, ratingBeer, ratingToilet, ratingMusic, toiletPicture } = review;
     return this.appService
-      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer, ratingToilet, ratingMusic })
+      .post(`/bars&events/newReview/${id}`, { title, comment, ratingBeer, ratingToilet, ratingMusic, toiletPicture })
       .then(response =>response.data)
   }
 

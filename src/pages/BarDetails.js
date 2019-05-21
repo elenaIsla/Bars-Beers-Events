@@ -3,12 +3,16 @@ import { withAuth } from "../lib/AuthProvider";
 import appService from "../lib/AppService";
 import { Link } from "react-router-dom";
 import beer from "../beer.svg";
+import "react-alice-carousel/lib/scss/alice-carousel.scss";
+import AliceCarousel from 'react-alice-carousel'
 
 class BarDetails extends Component {
 
   state = {
     bar: {},
     address: {},
+    reviews: [],
+    toiletPictures: [],
     error: null,
     isLoaded: false,
   } 
@@ -25,6 +29,7 @@ class BarDetails extends Component {
           this.setState({
             bar,
             address: bar.address,
+            toiletPictures: bar.toiletPictures,
             isLoaded: true,
           });
         })
@@ -66,22 +71,31 @@ class BarDetails extends Component {
   }
 
   render(){
-
-    const { _id, barType, name, price, draftBeer, bottleBeer, ratingBeer, ratingToilet, ratingMusic } = this.state.bar;
+    console.log(this.state.bar.toiletPictures)
+    const { _id, 
+      barType, 
+      name, 
+      price, 
+      draftBeer, 
+      bottleBeer, 
+      averageRating,
+      ratingBeer,
+      ratingToilet,
+      ratingMusic,
+     } = this.state.bar;
     const {street, neighbourhood, city} = this.state.address;
-    const {reviews} = this.state;   
+    const {reviews, toiletPictures} = this.state;  
     
     return this.state.bar && (
 
       <div className="card-container">
       <div className="bar-card-title">
-      <div className="padding">
-      <h3>{name}</h3>
+      <div className="flex width">
+      <div className=" half-box-avatar"><h3>{name}</h3>
       <p>{neighbourhood}</p> 
       <p>{city}</p>
       <p>{street}</p>
       <p>{barType}</p>
-     
       <p>
       {(() => {
         switch (price) {
@@ -93,6 +107,16 @@ class BarDetails extends Component {
       })()}
       </p>
       </div>
+
+      <div className="flex-column box-avatar margin">
+          <img src={beer} alt="beer"/>
+      <p>Rating: {averageRating && averageRating.toFixed(1)}</p>
+
+      <p>Total reviews: {reviews.length}</p>
+      </div>
+
+      </div>
+
       </div>
       <div className="bar-card-beers padding">
         <div className="flex padding">
@@ -154,6 +178,16 @@ class BarDetails extends Component {
           </div>
         )
       })}
+      <h3>Picture of the toilet</h3>
+      <div className="class-picture-slide">
+        <div className="class-porta-picture">
+        {toiletPictures.map((foto, index) => {
+          return (
+            <div className="class-imagen" key= {index}><img src={foto} alt="foto baño"/></div>
+          )
+        })}
+        </div>
+      </div>
       {this.props.user.username === 'admin' ? (
             <>
            

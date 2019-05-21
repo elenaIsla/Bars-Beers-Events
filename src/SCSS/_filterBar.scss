@@ -1,4 +1,23 @@
-.card-container {
+
+  .filter-form {
+    width: auto;
+    overflow: auto;
+  }
+  .filter-item {
+    background: gold;
+    height: 30px;
+    padding: 5px 10px;
+    color: goldenrod;
+    border-bottom: solid 1px goldenrod;
+  }
+  .filter-options {
+    display: flex;
+  }
+  
+  
+
+
+  .card-container {
     padding: 5% 0% 0% 0%;
     color: $primary;
     background-color: #F7F9F9;
@@ -13,7 +32,7 @@
 }
 
 .bar-card-title {
-    
+    text-align: center;
     display: flex;
     width: 100%;
     text-decoration: none;
@@ -40,9 +59,7 @@
 }
 
 .card-rating {
-    display: inline; 
-    
-  
+    width: 50%;
     
 }
 
@@ -56,7 +73,6 @@
 	text-align:center;
     font-size: 0.9rem;  
     text-decoration: none;
-    margin: 5% 0;
   
 }
 

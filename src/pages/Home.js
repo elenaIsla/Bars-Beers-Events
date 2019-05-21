@@ -18,7 +18,9 @@ class Home extends Component {
   
         <Link to = "/createBar" className="floating-button">Create Bar</Link><br/>
 
-        {/* <ListBeers/><br/> */}
+        <div className="padding">
+        <Link to = "/filter/bars" className="review-button">Filter by categories</Link>
+        </div>
         <h3 className="padding">Top 10 Bars near you:</h3>
         <ListBarsTop10/><br/>
        

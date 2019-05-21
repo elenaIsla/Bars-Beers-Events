@@ -241,32 +241,38 @@ class UpdateBar extends Component {
                         </div>
                     )        
                 }))}
-            <label><h3>Price range</h3></label><br/>
-        
-            
-            <label>1 - 2 €</label>
-            <input 
+            <label><h3>PRICE RANGE</h3></label>
+       
+         <div>
+             <input 
                 type="radio" 
                 value="range1" 
                 name="price"
                 checked={this.state.price === 'range1'}
                 onChange={this.handleChange}/>
-            <label>2 - 3 €</label>
-            <input 
+               <label className="padding">1 - 2 €</label>
+        </div> 
+            
+            <div>
+                <input 
                 type="radio" 
                 value="range2" 
                 name="price"
                 checked={this.state.price === 'range2'}
                 onChange={this.handleChange}/>
-            <label>3 - 4 €</label>
-            <input 
+                <label className="padding">2 - 3 €</label>
+            </div>
+            
+            <div><input 
                 type="radio" 
                 value="range3" 
                 name="price"
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
+                <label className="padding">3 - 4 €</label>
+                </div>
             
-            <input className="review-button" type="submit" value="Update bar" /> 
+            <input className="review-button margin" type="submit" value="Update bar" /> 
         
             </form>
         </div>

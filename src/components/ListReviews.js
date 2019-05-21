@@ -38,6 +38,7 @@ class ListReviews extends Component {
                 this.getlistReviews();
             })
             .catch(error => {
+                console.log('no se ha borrado', error);
             });
       }
 

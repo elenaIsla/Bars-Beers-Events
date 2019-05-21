@@ -30,7 +30,7 @@ html {
         p {
             
             color: $primary;
-            line-height: 1.2rem;
+            line-height: 1.3rem;
             text-decoration: none;
             font-size: 0.9rem;
         }
@@ -66,13 +66,16 @@ html {
         }
         hr {
             width: 95%;
+            padding: 0;
         }
         a {
             text-decoration: none;
         }
+
         .padding {
          padding: 0% 5%;
         }
+
         .margin {
             margin: 10% 0;
         }     
@@ -81,9 +84,8 @@ html {
             color: $seventhy;
             font-size: 1rem;
             text-align: left;
-            padding: 10px 0 0;
-            line-height: 1.8rem;
-            margin: 5% 0 0 0;
+            line-height: 1.5rem;
+            padding: 2% 0;
             
         }
         
@@ -98,7 +100,7 @@ html {
         
         input[type=text] {
             width: 100%;
-            padding: 5px 0%;
+            padding: 3% 0;
             box-sizing: border-box;
             border: none;
             border-bottom: 1px solid $eighty;
@@ -109,7 +111,7 @@ html {
         
           input[type=password] {
             width: 100%;
-            padding: 5px 0%;
+            padding: 3% 0%;
             box-sizing: border-box;
             border: none;
             border-bottom: 1px solid $eighty;
@@ -137,7 +139,7 @@ html {
         }
         
         input[type=checkbox] {
-            padding: 2% 5% 0 3%;
+            padding: 10%;
         }
 
         
@@ -177,7 +179,7 @@ html {
             border-radius: 50%;
         }
         .width {
-            width: 100%;
+            width: 90%;
         }
         .margin {
             margin: 5% 0;

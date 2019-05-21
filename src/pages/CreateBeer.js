@@ -32,21 +32,21 @@ class CreateBeer extends Component {
         this.setState({
             beerlogoImage: url
         })
-      }
+    }
 
     render() {
         const { name, description } = this.state;
         return (
         <div className="padding">
             <form onSubmit={this.handleFormSubmit}>                
-                <label>Beer name</label><br/>
+                <label>BEER NAME</label>
                 <input 
                     type="text" 
                     name="name"
                     value = {name}
                     onChange={this.handleChange}
                     placeholder="Beer name"/>
-                <label>Description</label><br/>
+                <label>DESCRIPTION</label>
                 <input 
                     type="text" 
                     name="description"
