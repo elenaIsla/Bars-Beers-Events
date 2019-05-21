@@ -71,7 +71,7 @@ class ListBarsTop10 extends Component {
             <hr></hr>
                 <p>Drafted Beers: </p>
                     {bar.draftBeer.map((beer, index) =>{
-          return (
+                return (
             <p key = {index}>
               {beer.name}         
             </p>

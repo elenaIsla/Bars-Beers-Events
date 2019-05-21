@@ -41,10 +41,10 @@ class FilterForm extends Component {
     var filteredItems = this.props.data;
     var state = this.state;
     var filterProperties = ["draftBeer", "bottleBeer", "barType", "price"];
-    filterProperties.forEach(function(filterBy) {
+    filterProperties.forEach((filterBy) => {
       var filterValue = state[filterBy];
       if (filterValue) {
-        filteredItems = filteredItems.filter(function(item) {
+        filteredItems = filteredItems.filter((item) =>{
           return item[filterBy] === filterValue;
         });
       }
@@ -57,10 +57,10 @@ class FilterForm extends Component {
             return item.bottleBeer.map((beer) => {
                 return beer.name;
             }) });
+    console.log(draftBeerArray)
     
-    
-    var barTypeArray = this.props.data.map(function(item) { return item.barType });
-    var priceArray = this.props.data.map(function(item) { return item.price });
+    var barTypeArray = this.props.data.map((item) => { return item.barType });
+    var priceArray = this.props.data.map((item) => { return item.price });
 
     draftBeerArray.unshift("");
     bottleBeerArray.unshift("");
