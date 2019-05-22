@@ -4,7 +4,7 @@ import appService from "../lib/AppService";
 import { Link } from "react-router-dom";
 import beer from "../beer.svg";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
-import AliceCarousel from 'react-alice-carousel'
+
 
 class BarDetails extends Component {
 

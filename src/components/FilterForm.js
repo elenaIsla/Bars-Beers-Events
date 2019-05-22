@@ -53,7 +53,7 @@ class FilterForm extends Component {
         return item.draftBeer.map((beer) => {
             return beer.name;
         }) });
-    var bottleBeerArray = filteredItems.map((item) => { 
+    var bottleBeerArray = filteredItems.map((item) => {
             return item.bottleBeer.map((beer) => {
                 return beer.name;
             }) });

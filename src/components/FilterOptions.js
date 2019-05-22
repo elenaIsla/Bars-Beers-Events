@@ -3,10 +3,13 @@ import React, {Component} from 'react';
 class FilterOptions extends Component {
 
     changeOption = (type, e) => {
+        console.log(e)
       var val = e.target.value;
       this.props.changeOption(val, type);
     }
     render() {
+        console.log(this.props.priceOptions)
+        console.log(this.props.draftBeerOptions)
       return (
         <div className="filter-options padding">
           <div className="filter-option">

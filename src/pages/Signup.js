@@ -167,7 +167,8 @@ class Signup extends Component {
         <div><p className="color-grey">ALREADY HAVE AN ACCOUNT?</p> 
           <Link to={"/login"} className="login_link">LOGIN</Link>
           </div>
-          <div className="alert animateOpen alert-danger">{error}</div>
+          <div>{error}</div>
+        s */}
       </div>
     );
   }
