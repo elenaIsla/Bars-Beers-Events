@@ -70,8 +70,17 @@ class BarDetails extends Component {
       }); 
   }
 
+  addtoFavourite = (idBar) => {   
+    const {_id} = this.props.user;   
+    appService
+        .addBartoFavourite(idBar, _id)
+            .then(data => {
+            })
+            .catch((error) => {            
+            })
+  }
+
   render(){
-    console.log(this.state.bar.toiletPictures)
     const { _id, 
       barType, 
       name, 
@@ -189,15 +198,13 @@ class BarDetails extends Component {
         </div>
       </div>
       {this.props.user.username === 'admin' ? (
-            <>
-           
-            <button onClick={this.handleDeleteBar} className="admin-button">Delete Bar</button><br/>
+          <>
+           <button onClick={this.handleDeleteBar} className="admin-button">Delete Bar</button><br/>
            <Link to = {`/bars/${_id}/updateBar`}> <button className="admin-button">Edit Bar</button> </Link>
-         
-            </>
+          </>
           ) : (<></>)}
-           <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
-      
+          <Link to = {`/bars/${_id}/addReview`}> <button className="review-button">Add a review</button></Link>
+          <button className="button-card-bar" onClick = {() => {this.addtoFavourite(_id)}}>Add to Favorite</button>
       
       </div>
       </div>

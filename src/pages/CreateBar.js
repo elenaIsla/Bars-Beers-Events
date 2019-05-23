@@ -134,6 +134,7 @@ class CreateBar extends Component {
                 id="city"
                 value = {city}
                 onChange={this.handleChange}>
+                <option value=""> </option>
                 <option value="Barcelona">Barcelona</option>
                 <option value="Almeria">Almería</option>
                 <option value="Madrid">Madrid</option>
@@ -146,12 +147,15 @@ class CreateBar extends Component {
                 id="neighbourhood"
                 value = {neighbourhood}
                 onChange={this.handleChange}>
+                <option value=""> </option>
                 <option value="Poble Nou">Poble Nou</option>
                 <option value="Poble Sec">Poble Sec</option>
                 <option value="Raval">Raval</option>
                 <option value="Borne">Borne</option>
                 <option value="Gótico">Gótico</option>
-                <option value="Sarria">Sarria</option> 
+                <option value="Sarria">Sarria</option>
+                <option value="Gracia">Grácia</option> 
+                <option value="Horta">Horta</option> 
             </select>
             </div>
 

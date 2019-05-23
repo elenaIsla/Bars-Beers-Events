@@ -20,8 +20,8 @@ import UpdateUser from "./pages/UpdateUser";
 import FilterBars from "./pages/FilterBars";
 import ListFavourites from "./components/ListFavourites";
 import './App.scss';
+import firebase from 'firebase/app';
 
-import firebase from 'firebase';
 
 const config = {
   storageBucket: 'gs://barsandevents.appspot.com/'
