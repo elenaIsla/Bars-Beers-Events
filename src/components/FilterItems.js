@@ -10,19 +10,19 @@ class FilterItems extends Component {
         <div>
             {this.props.data.map((bar, index) =>{
                 return (
-                    <div className="card-container" key={index}>
-                    <Link to = {`/bars/${bar._id}`}>
-                    <div className="bar-card-title">
-                    <div className="bar-title">
-                       <h3> {bar.name}</h3>
-                        <p>{bar.address.neighbourhood}</p>
-                    </div>
-                    <div className="flex column">
-                    <img src={beer} alt="logo"/>
-                    <p>Rating: {bar.averageRating.toFixed(1)}</p>
-                    </div>
-                    </div>
-                    </Link>
+            <div className="card-container" key={index}>
+            <Link to = {`/bars/${bar._id}`}>
+            <div className="bar-card-title">
+            <div className="bar-title">
+                <h3> {bar.name}</h3>
+                <p>{bar.address.neighbourhood}</p>
+            </div>
+            <div className="flex column">
+            <img src={beer} alt="logo"/>
+            <p>Rating: {bar.averageRating.toFixed(1)}</p>
+            </div>
+            </div>
+            </Link>
             <div className="bar-card-beers">
             <h4>Beers</h4>
             <hr></hr>

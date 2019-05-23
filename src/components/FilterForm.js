@@ -1,6 +1,5 @@
 
 import React, {Component} from "react";
-import FilterOptions from '../components/FilterOptions';
 import FilterItems from '../components/FilterItems';
 import appService from "../lib/AppService";
 
@@ -34,10 +33,6 @@ class FilterForm extends Component {
                 });
             }); 
     };
-  
-//   checked = (e) => {
-//     this.setState({multiple: e.target.value});
-//   }
 
   filterItems = (val, type) => {
      switch (type) {
@@ -85,8 +80,6 @@ changeOptionPrice = (e) => {
     var filterProperties = ["draftBeer", "bottleBeer", "address", "price"];
     filterProperties.forEach((filterBy) => {
       var filterValue = state[filterBy];
-      console.log(filterValue);
-      console.log(filteredItems);
       switch (filterBy){
         case "draftBeer":
                 if(filterValue){
@@ -98,7 +91,7 @@ changeOptionPrice = (e) => {
         case "bottleBeer":
                 if(filterValue){
                     filteredItems = filteredItems.filter((item) => {
-                         item.bottleBeer.forEach((beer) => {
+                         return item.bottleBeer.forEach((beer) => {
                             return beer.name === filterValue
                         })
                         
@@ -123,12 +116,6 @@ changeOptionPrice = (e) => {
         break;   
         }})
 
-    //   if (filterValue) {
-    //     filteredItems = filteredItems.filter((item) =>{
-    //       return item[filterBy] === filterValue;
-    //     });
-    //   }
-    // });
 
     const draftBeerArray = this.state.listBeers.map((beer) => {
         return beer.name;
@@ -136,15 +123,8 @@ changeOptionPrice = (e) => {
     const bottleBeerArray = this.state.listBeers.map((beer) => {
         return beer.name;
     })
-    // var draftBeerArray = filteredItems.map((item) => { 
-    //     return item.draftBeer.map((beer) => {
-    //         return beer.name;
-    //     }) });
-    // var bottleBeerArray = filteredItems.map((item) => {
-    //         return item.bottleBeer.map((beer) => {
-    //             return beer.name;
-    //         }) });
     
+
     var addressArray = this.props.data.map((item) => { return item.address.neighbourhood });
     var priceArray = this.props.data.map((item) => { return item.price });
 
@@ -203,18 +183,18 @@ changeOptionPrice = (e) => {
             </div>
           </div>
         </div>
-    
-
-        {/* <FilterOptions 
-            data={this.state.data} 
-            draftBeerOptions={draftBeerArray} 
-            bottleBeerOptions={bottleBeerArray}
-            addressOptions={addressArray}
-            priceOptions={priceArray}
-            changeOption={this.filterItems} /> */}
+  
         <div className="filter-form">
             <h3>YOUR SEARCH RESULT:</h3>
-            <FilterItems data={filteredItems} />
+            {{filteredItems} ? (
+              <FilterItems data={filteredItems} />
+            ):(
+              <div className="padding">
+                <p>Ups! There is no bar with this filters.
+                Be the first to create one!</p>
+              </div>
+            )}
+            
             </div>
       </div>
     )
@@ -222,11 +202,6 @@ changeOptionPrice = (e) => {
 };
 
 
-
-//   React.render(
-//     <FilterForm data={filterData} />,
-//     document.getElementById('filter')
-//   );
 
 /*if (val) {
       filteredItems = this.props.data.filter(function(item) {

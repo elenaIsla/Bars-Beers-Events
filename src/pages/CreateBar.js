@@ -81,6 +81,7 @@ class CreateBar extends Component {
                 id="barType"
                 value = {barType}
                 onChange={this.handleChange}>
+                <option></option>
                 <option value="Bar">Bar</option>
                 <option value="Restaurante">Restaurante</option>
                 <option value="Taberna">Taberna</option>
