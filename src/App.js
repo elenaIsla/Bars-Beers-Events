@@ -20,7 +20,7 @@ import UpdateUser from "./pages/UpdateUser";
 import FilterBars from "./pages/FilterBars";
 import ListFavourites from "./components/ListFavourites";
 import './App.scss';
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 
 
 const config = {
@@ -46,8 +46,8 @@ class App extends Component {
             <PrivateRoute path="/bars/:id/addReview" component={AddReview} />
             <PrivateRoute path="/bars/:id" component={BarDetails} />
             <PrivateRoute path="/bars" component={ListBars} />
-            <PrivateRoute path="/users/:id/updateUser" component={UpdateUser} />
             <PrivateRoute path="/users/:id/listFavourite" component={ListFavourites} />
+            <PrivateRoute path="/users/:id/updateUser" component={UpdateUser} />       
             <PrivateRoute path="/users/:id" component={UserDetails} />
             <PrivateRoute path="/filter/bars" component={FilterBars} />
             

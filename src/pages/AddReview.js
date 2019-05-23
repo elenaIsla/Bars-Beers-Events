@@ -18,14 +18,17 @@ class AddReview extends Component {
 
     onStarClickBeer = (nextValue, prevValue, name) => {
         this.setState({ratingBeer: nextValue});
+        console.log(nextValue)
       }
 
     onStarClickToilet = (nextValue, prevValue, name) => {
+        console.log(nextValue)
     this.setState({ratingToilet: nextValue});
     }
 
     onStarClickMusic = (nextValue, prevValue, name) => {
         this.setState({ratingMusic: nextValue});
+        console.log(this.ratingMusic)
       }
 
     handleFormSubmit = event => {

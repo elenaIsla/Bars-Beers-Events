@@ -98,6 +98,7 @@ class Signup extends Component {
             id="city"
             value={city}
             onChange={this.handleChange}>
+              <option></option>
               <option value="Barcelona">Barcelona</option>
               <option value="Madrid">Madrid</option>
               <option value="Valencia">Valencia</option>
@@ -113,6 +114,7 @@ class Signup extends Component {
             id="neighbourhood"
             value={neighbourhood}
             onChange={this.handleChange}>
+              <option></option>
               <option value="Poble Nou">Poble Nou</option>
               <option value="Poble Sec">Poble Sec</option>
               <option value="Sarria">Sarria</option>

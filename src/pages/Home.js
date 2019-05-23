@@ -3,6 +3,7 @@ import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import ListReviews from "../components/ListReviews";
 import ListBarsTop10 from "../components/ListBarsTop10";
+import ListUsers from '../components/ListUsers';
 import filterButton from "../filterButton.svg";
 
 
@@ -26,9 +27,7 @@ class Home extends Component {
        
         <h3 className="padding">Top 10 - Best rated</h3>
         <ListReviews/>
-        {/* <div className="padding"><h3>Total list of Bars:</h3>
-        <ListBars/></div>
-        <div className="padding"><h3>List of Users:</h3>
+        {/* <div className="padding"><h3>List of Users:</h3>
         <ListUsers/></div> */}
         { user.username === 'admin' ? (
             <>

@@ -84,18 +84,15 @@ changeOptionPrice = (e) => {
         case "draftBeer":
                 if(filterValue){
                     filteredItems = filteredItems.filter((item) => {
-                        return item.draftBeer.name === filterValue;           
+                        return item.draftBeer.indexOf(filterValue) !== -1;         
                     })
                 };
         break;
         case "bottleBeer":
                 if(filterValue){
                     filteredItems = filteredItems.filter((item) => {
-                         return item.bottleBeer.forEach((beer) => {
-                            return beer.name === filterValue
+                         return item.bottleBeer.indexOf(filterValue) !== -1;
                         })
-                        
-                    })
                 }
         break;
         case "address":
@@ -186,7 +183,7 @@ changeOptionPrice = (e) => {
   
         <div className="filter-form">
             <h3>YOUR SEARCH RESULT:</h3>
-            {{filteredItems} ? (
+            {filteredItems.length ? (
               <FilterItems data={filteredItems} />
             ):(
               <div className="padding">
