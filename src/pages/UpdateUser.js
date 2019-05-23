@@ -161,7 +161,7 @@ class UpdateUser extends Component {
             {favouriteBeers && favouriteBeers.map((beer, index) => {
                 return (
                     <div key = {index}>
-                        {beer.name}
+                       <p>{beer.name}</p> 
                     </div>
                 )
             })}   

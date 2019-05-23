@@ -100,12 +100,12 @@ class BarDetails extends Component {
       <div className="card-container">
       <div className="bar-card-title">
       <div className="flex width">
-      <div className=" half-box-avatar"><h3>{name}</h3>
-      <p>{neighbourhood}</p> 
-      <p>{city}</p>
-      <p>{street}</p>
-      <p>{barType}</p>
-      <p>
+      <div className=" half-box-avatar"><h3 className="left">{name}</h3>
+      <p className="left">{neighbourhood}</p> 
+      <p className="left">{city}</p>
+      <p className="left">{street}</p>
+      <p className="left">{barType}</p>
+      <p className="left">
       {(() => {
         switch (price) {
           case "range1":   return "1 - 2 €";

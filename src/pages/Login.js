@@ -26,7 +26,7 @@ class Login extends Component {
     
     return (
       <div className="padding">
-        <div className="alert animateOpen alert-danger">{error}</div>
+        <div>{error}</div>
       <div className="container-login">
        <img className="logo" src={process.env.PUBLIC_URL + "images/logo.svg"} alt="logo"/>
       <form onSubmit={this.handleFormSubmit}>

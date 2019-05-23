@@ -5,12 +5,11 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+   
 }
 
 .nav-left {
     display: inline;
-    
     margin: 0 5%;
 }
 
@@ -20,7 +19,7 @@
 
 .nav-right {
     display: grid;   
-    padding: 0 5% 0 0;
+  
 }
 
 .nav-img {
@@ -30,13 +29,14 @@
 
 .nav-right ul {
     display: flex;
-    padding: 0 5% 0 0;
+    padding: 0%;
     margin: 0;
     list-style: none;
 }
+
 .nav-right a {
     display: block;
-    padding: 2em;
+    padding: 1rem 2.3rem 0.9rem 1rem;
     background-color: $secondary;
     text-decoration: none;
     color: $primary;
@@ -52,8 +52,7 @@
 .nav-right ul li ul:hover {
     display: block;
     background-color: $secondary; 
-    border: 1px solid $terciary;
-    
+    border: 0.5px solid $terciary;
     position: absolute;
 }
 

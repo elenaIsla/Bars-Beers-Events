@@ -168,7 +168,7 @@ class Signup extends Component {
           <Link to={"/login"} className="login_link">LOGIN</Link>
           </div>
           <div>{error}</div>
-        s */}
+      
       </div>
     );
   }

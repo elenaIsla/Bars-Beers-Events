@@ -194,33 +194,36 @@ class CreateBar extends Component {
                         </div>
                     )        
                 })}
-            <label><h3>Price range</h3></label><br/>
+            <label><h3>PRICE RANGE</h3></label><br/>
             <div>
-            <label>1 - 2 €</label>
+            
             <input 
                 type="radio" 
                 value="range1" 
                 name="price"
                 checked={this.state.price === 'range1'}
                 onChange={this.handleChange}/>
+                <label className="padding">1 - 2 €</label>
                 </div>
            <div>
-            <label>2 - 3 €</label>
+            
             <input 
                 type="radio" 
                 value="range2" 
                 name="price"
                 checked={this.state.price === 'range2'}
                 onChange={this.handleChange}/>
+                <label className="padding">2 - 3 €</label>
             </div>
             <div>
-            <label>3 - 4 €</label>
+           
             <input 
                 type="radio" 
                 value="range3" 
                 name="price"
                 checked={this.state.price === 'range3'}
                 onChange={this.handleChange}/>
+                 <label className="padding">3 - 4 €</label>
             </div>
             
             <input className="review-button" type="submit" value="Create bar" /> 

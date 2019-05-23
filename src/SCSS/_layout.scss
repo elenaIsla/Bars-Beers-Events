@@ -6,6 +6,7 @@ $fifthy: #1fbb3b;
 $sixthy: #3d397c;
 $seventhy: #1d1d26;
 $eighty: #efeff4;
+$ninethy: #CACFD2;
 $font-primary: 'Open Sans', sans-serif;
 $font-secundary: 'Roboto', cursive;
 $font-size: 16px;
@@ -187,6 +188,9 @@ html {
         .column {
             display:flex;
             flex-flow: column;
+        }
+        .left {
+            text-align: left;
         }
     }    
 }    
